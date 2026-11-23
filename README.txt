@@ -1,7 +1,7 @@
-﻿Framewell 3.1.1 - Windows x64 release candidate
+Framewell 3.2.0 - Windows x64
 
 START HERE
-1. Download Framewell-3.1.1-rc1-win-x64.zip.
+1. Download Framewell-3.2.0-win-x64.zip.
 2. Extract the entire ZIP to a writable local folder.
 3. Double-click Framewell.exe. Keep the app folder beside it.
 
@@ -114,3 +114,8 @@ Public runtime/source archives exclude personal state, snapshots, credentials,
 logs, backups and development fixtures. This is an unsigned release candidate;
 see PUBLICATION.txt for validation limits and steps toward a broad stable release.
 
+
+UPDATES
+Automatic stable-release checks are enabled by default in Settings. Verified
+updates install when Framewell closes, preserving local profiles and settings.
+See docs/UPDATES.md for verification, manual updates and recovery.

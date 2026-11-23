@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
@@ -13,8 +13,8 @@ using System.Reflection;
 [assembly: AssemblyTitle("Framewell")]
 [assembly: AssemblyProduct("Framewell")]
 [assembly: AssemblyDescription("Per-game presets and reversible application profiles")]
-[assembly: AssemblyVersion("3.1.1.0")]
-[assembly: AssemblyFileVersion("3.1.1.0")]
+[assembly: AssemblyVersion("3.2.0.0")]
+[assembly: AssemblyFileVersion("3.2.0.0")]
 
 internal static class GamingModeLauncher
 {

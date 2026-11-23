@@ -1,27 +1,25 @@
-﻿<div align="center">
+<div align="center">
 
 # Framewell
-
-**Your PC. Your session.**
 
 A configurable Windows dashboard for gaming sessions, app profiles, performance experiments, and system tools.
 
 ![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square)
-![Status](https://img.shields.io/badge/status-3.1.1%20release%20candidate-F0B44D?style=flat-square)
+![Version](https://img.shields.io/badge/version-3.2.0-087CFA?style=flat-square)
 ![License](https://img.shields.io/badge/license-GPL--3.0-65B890?style=flat-square)
 ![Development](https://img.shields.io/badge/development-AI--assisted-9678D3?style=flat-square)
 
-**[Download for Windows](https://github.com/ezeustech/framewell/releases/download/v3.1.1-rc1/Framewell-3.1.1-rc1-win-x64.zip)** · [Get started](#get-started) · [Features](#features) · [Build](#build-from-source) · [AI transparency](AI_TRANSPARENCY.md) · [Technical guide](docs/ARCHITECTURE.md)
+**[Download for Windows](https://github.com/ezeustech/framewell/releases/download/v3.2.0/Framewell-3.2.0-win-x64.zip)** · [Get started](#get-started) · [Features](#features) · [Build](#build-from-source) · [AI transparency](AI_TRANSPARENCY.md) · [Technical guide](docs/ARCHITECTURE.md)
 
 </div>
 
 Framewell brings session controls and Windows tools into one desktop app. Choose what closes while you play, restore supported apps afterward, tune individual games, and keep separate configurations for different tasks. The interface uses compact widgets, a restrained layout, and 33 selectable color palettes.
 
-**Previously called Gaming Mode, now Framewell.** Version 3.1.1 brings a simple portable download: extract the ZIP and double-click `Framewell.exe`. No installer or terminal commands are needed to open the dashboard.
+**Version 3.2 adds background updates and smoother navigation.** System reads run separately from the interface, window controls are larger and positioned at the top right, and updates install after you close the app. Extract the ZIP and double-click `Framewell.exe` to start.
 
 **Optimizer runs directly inside the app.** Its Windows tools run in the same process, with embedded navigation and native dialogs. NVIDIA Control Panel remains available as an external vendor tool.
 
-This is an **unsigned release candidate**. It has been developed and tested on one Windows 11 PC with isolated regression tests; broad hardware and game compatibility has not been established. There are no promised FPS gains or universal “best settings.”
+This is an **unsigned, early-stage project**. It has been developed and tested on one Windows 11 PC with isolated regression tests; broad hardware and game compatibility has not been established. There are no promised FPS gains or universal “best settings.”
 
 ## Preview
 
@@ -51,12 +49,13 @@ This is an **unsigned release candidate**. It has been developed and tested on o
 | Windows controls | Manage Game Mode, background capture, GPU scheduling preference, per-EXE GPU preference, and primary-display refresh rate inside the app. Refresh previews require confirmation and otherwise revert. |
 | Embedded Windows tools | Access 16 sections adapted from Optimizer 17.0, including Windows tweaks, startup, installed apps, cleanup, DNS/ping, HOSTS, registry tools, context menus, hardware, file handles, disk activity, and CPU/process controls. |
 | Personalization | Save whole-app or tab settings profiles, choose optional dashboard startup, and select light, dark, OLED, or fan-inspired JoJo palettes. |
+| Updates | Check official GitHub releases automatically at startup, verify downloads with SHA-256, and install after closing. Turn automatic updates off in Settings or check manually. |
 
 The dashboard refreshes on demand. It installs no permanent background service. Optional memory monitoring and explicit diagnostics run only when selected; embedded tools load on demand and can be unloaded.
 
 ## Get started
 
-1. **[Download Framewell for Windows](https://github.com/ezeustech/framewell/releases/download/v3.1.1-rc1/Framewell-3.1.1-rc1-win-x64.zip).** Choose the `win-x64.zip` release asset.
+1. **[Download Framewell for Windows](https://github.com/ezeustech/framewell/releases/download/v3.2.0/Framewell-3.2.0-win-x64.zip).** Choose the `win-x64.zip` release asset.
 2. **Extract the entire ZIP** to a writable local folder, such as a folder in Documents. Use Windows **Extract All** rather than opening the EXE inside the ZIP.
 3. **Double-click `Framewell.exe`.** Keep the `app` folder beside it.
 
@@ -70,7 +69,9 @@ No installer, compilation, PowerShell command, or administrator approval is need
 
 **Supported platform:** Windows 11 x64, or Windows 10 version 1903 or later with **.NET Framework 4.8+** and **Windows PowerShell 5.1** available. These runtimes are included in standard installations of those Windows versions. NVIDIA features need a compatible GPU and installed driver; FPS capture needs a supported PresentMon installation. Individual Windows tools have additional OS and privilege requirements. The portable build is unsigned, so Windows may show a publisher/reputation warning.
 
-For an update, close Framewell and extract the new portable ZIP into the same folder, keeping your existing `app/state` folder. Profiles from the older Gaming Mode layout remain compatible; see [upgrading and local state](docs/ARCHITECTURE.md#state-and-packaging). Never upload a personal state folder to a public issue.
+**Automatic updates are enabled by default.** Settings contains the toggle, manual check, and download controls. Newer stable releases download in the background and install after you close Framewell; the next launch opens the updated version. Profiles, preferences, and restore journals stay in place. There is no updater service or scheduled task. See [update behavior and recovery](docs/UPDATES.md).
+
+For an offline or manual update, close Framewell and extract the new portable ZIP into the same folder, keeping your existing `app/state` folder. Profiles from the older Gaming Mode layout remain compatible; see [upgrading and local state](docs/ARCHITECTURE.md#state-and-packaging). Never upload a personal state folder to a public issue.
 
 ## Know what each control changes
 

@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param([string]$LauncherPath)
 $ErrorActionPreference='Stop'
 if(-not $LauncherPath){$LauncherPath=Join-Path $PSScriptRoot 'Framewell.exe'}
@@ -23,7 +23,7 @@ $required=@([PortableLayout]::GetRequiredFiles())
 Assert-Portable ('GamingMode.exe' -in $required -and 'GamingMode.exe.config' -in $required -and 'vendor\optimizer\GamingMode.Optimizer.dll' -in $required) 'Payload validation includes host config and embedded library'
 Assert-Portable (@($required|Where-Object{[IO.Path]::IsPathRooted($_) -or $_ -match '(^|[\\/])\.\.([\\/]|$)'}).Count -eq 0) 'Required file list contains only package-relative paths'
 Assert-Portable (@($assembly.GetReferencedAssemblies()|Where-Object Name -eq 'System.Management.Automation').Count -eq 0) 'Bootstrap can report a missing PowerShell component before loading the payload'
-Assert-Portable ($assembly.GetName().Version -eq [version]'3.1.1.0') 'Bootstrap version is 3.1.1'
+Assert-Portable ($assembly.GetName().Version -eq [version]'3.2.0.0') 'Bootstrap version is 3.2.0'
 
 $launcher=$assembly.GetType('FramewellPortableLauncher',$true)
 $flags=[Reflection.BindingFlags]'Static,NonPublic'

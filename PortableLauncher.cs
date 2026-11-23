@@ -1,4 +1,4 @@
-// Framewell portable entry point. GPL-3.0; component notices remain with the payload.
+﻿// Framewell portable entry point. GPL-3.0; component notices remain with the payload.
 // This process performs startup checks, opens the fixed bundled host, then exits.
 using System;
 using System.Diagnostics;
@@ -12,8 +12,8 @@ using Microsoft.Win32;
 [assembly: AssemblyTitle("Framewell")]
 [assembly: AssemblyProduct("Framewell")]
 [assembly: AssemblyDescription("Gaming sessions, app profiles, and PC performance tools")]
-[assembly: AssemblyVersion("3.1.1.0")]
-[assembly: AssemblyFileVersion("3.1.1.0")]
+[assembly: AssemblyVersion("3.2.0.0")]
+[assembly: AssemblyFileVersion("3.2.0.0")]
 
 /// <summary>Pure package/argument rules shared with isolated publication checks.</summary>
 public static class PortableLayout
@@ -49,6 +49,7 @@ public static class PortableLayout
             "GamingSystemNative.cs", "MemoryTools.ps1", "MemoryWorker.ps1", "SettingsProfiles.ps1",
             "OptimizerTools.ps1", "WindowsGameSettings.ps1", "WindowsDisplayNative.cs",
             "DisplayWorker.ps1", "EmbeddedOptimizer.ps1", "MacInterface.ps1",
+            "ResponsiveUI.ps1", "FramewellUpdateUI.ps1", "Framewell.Updater.exe",
             "vendor\\optimizer\\GamingMode.Optimizer.dll", "vendor\\optimizer\\Newtonsoft.Json.dll",
             "vendor\\optimizer\\features.json"
         };

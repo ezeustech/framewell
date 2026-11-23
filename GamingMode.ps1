@@ -1,4 +1,4 @@
-param(
+﻿param(
     [ValidateSet('Panel','Enter','Restore','Media','Preview','Status','WindowsTools','Performance','Games')][string]$Action='Panel',
     [switch]$NoUI,
     [switch]$LibraryOnly
@@ -9,7 +9,7 @@ $script:GamingStateDirectory=Join-Path $PSScriptRoot 'state'
 $script:GamingStatePath=Join-Path $script:GamingStateDirectory 'session.json'
 $script:GamingStatusControl=$null
 $script:GamingStatusCallback=$null
-foreach($module in @('OptionalApps.ps1','MediaStack.ps1','OptionalHelpers.ps1','SessionExtras.ps1','ThemeCatalog.ps1','Performance.ps1','TuningElevation.ps1','GameLibrary.ps1','AppProfiles.ps1','NvidiaProfiles.ps1','NetworkDiagnostics.ps1','FrameBenchmark.ps1','GameProcessTuning.ps1','MemoryTools.ps1','SettingsProfiles.ps1','OptimizerTools.ps1','WindowsGameSettings.ps1','EmbeddedOptimizer.ps1','MacInterface.ps1')) {
+foreach($module in @('OptionalApps.ps1','MediaStack.ps1','OptionalHelpers.ps1','SessionExtras.ps1','ThemeCatalog.ps1','Performance.ps1','TuningElevation.ps1','GameLibrary.ps1','AppProfiles.ps1','NvidiaProfiles.ps1','NetworkDiagnostics.ps1','FrameBenchmark.ps1','GameProcessTuning.ps1','MemoryTools.ps1','SettingsProfiles.ps1','OptimizerTools.ps1','WindowsGameSettings.ps1','EmbeddedOptimizer.ps1','MacInterface.ps1','ResponsiveUI.ps1','FramewellUpdateUI.ps1')) {
     . (Join-Path $PSScriptRoot $module)
 }
 

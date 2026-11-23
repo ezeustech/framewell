@@ -1,5 +1,5 @@
 {
-  "Version": "3.1.1-rc1",
+  "Version": "3.2.0",
   "Files": [
     "GamingMode.exe",
     "GamingMode.ico",
@@ -59,6 +59,12 @@
     "docs\\images\\overview-oled.png",
     "docs\\images\\windows-gaming-settings.png",
     "vendor\\optimizer\\LICENSE-Poppins.txt",
-    "GamingMode.exe.config"
+    "GamingMode.exe.config",
+    "ResponsiveUI.ps1",
+    "FramewellUpdateUI.ps1",
+    "Framewell.Updater.exe",
+    "FramewellUpdates.cs",
+    "UpdateHelper.cs",
+    "Build-Updater.ps1"
   ]
 }

@@ -1,7 +1,7 @@
-Framewell 3.1.1-rc1 (previously Gaming Mode)
+Framewell 3.2.0 (previously Gaming Mode)
 
 Portable use:
-  1. Download Framewell-3.1.1-rc1-win-x64.zip.
+  1. Download Framewell-3.2.0-win-x64.zip.
   2. Extract the entire ZIP to a writable local folder.
   3. Double-click Framewell.exe and keep the app folder beside it.
 
@@ -10,11 +10,11 @@ Support files and documentation are under app. Personal data is under app/state.
 Existing flat Gaming Mode installations retain their original state location.
 
 Assets:
-  Framewell-3.1.1-rc1-win-x64.zip
-  Framewell-3.1.1-rc1-source.zip
+  Framewell-3.2.0-win-x64.zip
+  Framewell-3.2.0-source.zip
   SHA256SUMS.txt
 
-This is an unsigned Windows x64 release candidate. Windows may show a publisher
+This is an unsigned early-stage Windows x64 release. Windows may show a publisher
 or reputation warning. Read README.md, AI_TRANSPARENCY.md, docs/LIMITATIONS.md
 and docs/VALIDATION.md. Development and test creation used substantial AI
 assistance. No independent audit or universal performance benefit is claimed.
@@ -42,3 +42,8 @@ No automatic updater or telemetry is installed by the host. Embedded upstream
 automatic updater/feed/tray initialization is disabled. Explicit network tests
 and internet-connected tools contact their chosen endpoints.
 
+
+UPDATES
+Automatic stable-release checks are enabled by default in Settings. Verified
+updates install when Framewell closes, preserving local profiles and settings.
+See docs/UPDATES.md for verification, manual updates and recovery.

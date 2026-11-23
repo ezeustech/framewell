@@ -49,3 +49,9 @@ For subsequent portable updates, close Framewell and extract the complete new ZI
 
 `Build-EmbeddedOptimizer.ps1` compiles the modified upstream source using a SHA-256-pinned compiler package. `Build-Launcher.ps1` builds the host and invokes `Build-PortableLauncher.ps1` for the public entry point. `Build-Release.ps1` generates portable runtime/source ZIPs and checksums. The portable package includes modified corresponding source at `app/vendor/optimizer/embedded-source.zip`; the source distribution includes the complete editable tree and build scripts.
 
+
+## Background reads and updates
+
+ResponsiveUI.ps1 owns a single reusable background runspace for read-only navigation work. Its dispatcher polling timer runs only while jobs are pending. Closing the window cancels and disposes pending jobs and the pool. Controls remain on the UI thread. Embedded Windows tools are still created lazily on the UI thread, with the selected palette applied before attachment.
+
+FramewellUpdates.cs checks stable GitHub releases asynchronously and stages verified packages. FramewellUpdateUI.ps1 owns the Settings controls and close-time handoff. Framewell.Updater.exe waits for the identified process to exit, verifies the archive again, and replaces application files with rollback copies. See [updates and recovery](UPDATES.md).

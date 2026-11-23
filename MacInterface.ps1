@@ -2,6 +2,8 @@
 # Windows PowerShell 5.1 compatible; workflow changes remain in the backend.
 if (-not (Get-Command Get-GamingThemes -ErrorAction SilentlyContinue)) { . (Join-Path $PSScriptRoot 'ThemeCatalog.ps1') }
 if (-not (Get-Command Get-GamingEmbeddedOptimizerInfo -ErrorAction SilentlyContinue)) { . (Join-Path $PSScriptRoot 'EmbeddedOptimizer.ps1') }
+if (-not (Get-Command Initialize-FramewellReads -ErrorAction SilentlyContinue)) { . (Join-Path $PSScriptRoot 'ResponsiveUI.ps1') }
+if (-not (Get-Command Add-FramewellUpdateControls -ErrorAction SilentlyContinue)) { . (Join-Path $PSScriptRoot 'FramewellUpdateUI.ps1') }
 
 function ConvertTo-MacGamingThemedXaml {
     param([xml]$Document)
@@ -26,6 +28,7 @@ function Apply-MacGamingTheme {
     param($UI, [string]$Theme='Dark')
     $palette=Get-GamingThemes | Where-Object Id -eq $Theme | Select-Object -First 1
     if(-not $palette){$Theme='Dark';$palette=Get-GamingThemes|Where-Object Id -eq 'Dark'}
+    if($UI.ThemeInitialized -and $UI.Theme -eq $Theme){return}
     $dark = @{
         'FFFFFF'='#282F3A'; '202634'='#EBEFF6'; '344056'='#E0E7F2'; '485267'='#B8C2D2'
         '536F93'='#AEC7E8'; '617087'='#B4C0D3'; '657185'='#B1BED2'; '667184'='#A9B5C8'
@@ -79,7 +82,7 @@ function Apply-MacGamingTheme {
         $metricBrush = New-Object System.Windows.Media.SolidColorBrush $metricColor
         $metricBrush.Freeze()
         $UI.Window.Resources['MacMetricAccent'] = $metricBrush.PSObject.BaseObject
-        $UI.Theme = $Theme
+        $UI.Theme = $Theme; $UI.ThemeInitialized = $true
         $UI.Controls.AppearanceTheme.SelectedIndex = [array]::IndexOf(@((Get-GamingThemes).Id),$Theme)
         if($UI.Controls.ContainsKey('ThemeDescription')){$UI.Controls.ThemeDescription.Text=$palette.Description+' Original character-inspired colors; no artwork included.'}
         if($UI.Controls.ContainsKey('ThemeSwatches')){foreach($pair in @(@(0,$palette.Accent),@(1,$palette.Metric),@(2,$palette.Surface),@(3,$palette.Background))){$UI.Controls.ThemeSwatches.Children[[int]$pair[0]].Background=New-Object Windows.Media.SolidColorBrush ([Windows.Media.ColorConverter]::ConvertFromString([string]$pair[1]))}}
@@ -185,10 +188,10 @@ function Set-MacGamingPreset {
 }
 
 function Update-MacGamingDashboard {
-    param($UI)
-    $dashboard = Get-PerformanceDashboard
-    $preview = Get-GamingPreview
-    $preferences = Get-GamingPreferences
+    param($UI,$Snapshot=$null)
+    $dashboard = if($Snapshot){$Snapshot.Dashboard}else{Get-PerformanceDashboard}
+    $preview = if($Snapshot){$Snapshot.Preview}else{Get-GamingPreview}
+    $preferences = if($Snapshot){$Snapshot.Preferences}else{Get-GamingPreferences}
     $state = $preview.State
     $UI.Dashboard = $dashboard
     $UI.Active = [bool]($state -and $state.Active)
@@ -257,6 +260,8 @@ function Show-MacGamingResult {
 function Invoke-MacGamingBusy {
     param($UI, [scriptblock]$Operation, [string]$Message, [string]$SuccessMessage='Done.', [switch]$CloseOnSuccess, [switch]$RefreshDashboard, [switch]$InlineResult)
     if ($UI.Busy) { return }
+    # Do not apply an older read snapshot after a user starts a state-changing action.
+    if($UI.ReadJobs.Count){Stop-FramewellReads $UI}
     $UI.Busy = $true
     $UI.Controls.MainWorkspace.IsEnabled = $false
     $UI.Controls.CloseWindow.IsEnabled = $false
@@ -564,10 +569,10 @@ function Invoke-MacGamingNvidiaPreset {
 }
 
 function Update-MacGamingProfiles {
-    param($UI,[string]$SelectId='')
+    param($UI,[string]$SelectId='',$Snapshot=$null)
     if(-not $SelectId -and $UI.CurrentProfile){$SelectId=[string]$UI.CurrentProfile.Id}
-    $UI.ProfileComponents=Get-GamingProfileComponents
-    $UI.Profiles=@(Get-GamingProfiles)
+    $UI.ProfileComponents=if($Snapshot){$Snapshot.Components}else{Get-GamingProfileComponents}
+    $UI.Profiles=if($Snapshot){@($Snapshot.Profiles)}else{@(Get-GamingProfiles)}
     $UI.Controls.ProfileList.ItemsSource=$null;$UI.Controls.ProfileList.ItemsSource=$UI.Profiles
     $selected=$UI.Profiles|Where-Object Id -eq $SelectId|Select-Object -First 1
     if($selected){$UI.Controls.ProfileList.SelectedItem=$selected}elseif($UI.Profiles.Count){$UI.Controls.ProfileList.SelectedIndex=0}
@@ -816,15 +821,15 @@ function Add-MacGamingWindowsSettingsControls {
 }
 
 function Update-MacGamingWindowsSettings {
-    param($UI,[switch]$IncludeDisplay)
+    param($UI,[switch]$IncludeDisplay,$Snapshot=$null)
     if(Get-Command Get-GamingWindowsSettings -ErrorAction SilentlyContinue){
-        $state=Get-GamingWindowsSettings
+        $state=if($Snapshot){$Snapshot.State}else{Get-GamingWindowsSettings}
         foreach($pair in @(@('WindowsGameMode','GameMode'),@('WindowsHardwareScheduling','HardwareScheduling'),@('WindowsBackgroundCapture','BackgroundCapture'))){$UI.Controls[$pair[0]].SelectedItem=[string]$state.($pair[1])}
         $UI.Controls.WindowsSettingsAdministrator.Visibility=if($state.IsAdministrator){'Collapsed'}else{'Visible'}
         $UI.Controls.WindowsSettingsStatus.Text='Current Windows preferences loaded. Default lets Windows decide.'
     }
     if($IncludeDisplay -and (Get-Command Get-GamingDisplayModes -ErrorAction SilentlyContinue)){
-        $modes=@(Get-GamingDisplayModes);$UI.Controls.WindowsDisplayMode.ItemsSource=$modes
+        $modes=if($Snapshot){@($Snapshot.Modes)}else{@(Get-GamingDisplayModes)};$UI.Controls.WindowsDisplayMode.ItemsSource=$modes
         $current=$modes|Where-Object IsCurrent|Select-Object -First 1
         if($current){$UI.Controls.WindowsDisplayMode.SelectedItem=$current}elseif($modes.Count){$UI.Controls.WindowsDisplayMode.SelectedIndex=0}
         $UI.Controls.WindowsDisplayPreview.IsEnabled=($modes.Count -gt 0)
@@ -946,12 +951,12 @@ function Save-MacGamingCpu {
 }
 
 function Update-MacGamingServers {
-    param($UI,[switch]$ReloadGames,[switch]$ActiveConnections,[switch]$LoadPreferences)
+    param($UI,[switch]$ReloadGames,[switch]$ActiveConnections,[switch]$LoadPreferences,$CachedGames=$null)
     if($UI.LoadingServers){return};$UI.LoadingServers=$true
     $savedProbe=$null
     try{
         if(($LoadPreferences -or -not $UI.NetworkLoaded) -and (Get-Command Get-GamingNetworkPreferences -ErrorAction SilentlyContinue)){$savedProbe=Get-GamingNetworkPreferences}
-        if($ReloadGames -or -not $UI.Controls.NetworkGame.ItemsSource){$selected=if($savedProbe){[string]$savedProbe.GameId}else{[string]$UI.Controls.NetworkGame.SelectedItem.Id};$games=@([pscustomobject]@{Id='';Name='All games'})+@(Get-GameLibrary);$UI.Controls.NetworkGame.ItemsSource=$games;$match=$games|Where-Object Id -eq $selected|Select-Object -First 1;if($match){$UI.Controls.NetworkGame.SelectedItem=$match}else{$UI.Controls.NetworkGame.SelectedIndex=0}}
+        if($ReloadGames -or -not $UI.Controls.NetworkGame.ItemsSource){$selected=if($savedProbe){[string]$savedProbe.GameId}else{[string]$UI.Controls.NetworkGame.SelectedItem.Id};$games=@([pscustomobject]@{Id='';Name='All games'})+$(if($null -ne $CachedGames){@($CachedGames)}else{@(Get-GameLibrary)});$UI.Controls.NetworkGame.ItemsSource=$games;$match=$games|Where-Object Id -eq $selected|Select-Object -First 1;if($match){$UI.Controls.NetworkGame.SelectedItem=$match}else{$UI.Controls.NetworkGame.SelectedIndex=0}}
         $gameId=[string]$UI.Controls.NetworkGame.SelectedItem.Id
         $rows=@(Get-GamingNetworkServers -GameId $gameId)
         if($ActiveConnections){if(-not $gameId){throw 'Choose a game before inspecting its active connections.'};$rows+=@(Get-GamingActiveGameEndpoints -GameId $gameId)}
@@ -1085,10 +1090,11 @@ function Show-MacGamingWindowsTools {
             $UI.Controls.WindowsToolsSection.ItemsSource=@(Get-GamingEmbeddedOptimizerSections -View $view)
             $formsHost=New-Object System.Windows.Forms.Integration.WindowsFormsHost
             $UI.EmbeddedOptimizerHost=$formsHost
+            Set-GamingEmbeddedOptimizerTheme -View $view -Theme $UI.Theme
+            $formsHost.SetResourceReference([System.Windows.Forms.Integration.WindowsFormsHost]::BackgroundProperty,'MacBrushFAFBFD')
             $formsHost.Child=$view
             [void]$UI.Controls.WindowsToolsArea.Children.Add($formsHost)
             $UI.Controls.WindowsToolsPlaceholder.Visibility='Collapsed'
-            Set-GamingEmbeddedOptimizerTheme -View $view -Theme $UI.Theme
             $UI.Controls.WindowsToolsAdministrator.Visibility=if($info.IsAdministrator){'Collapsed'}else{'Visible'}
             $UI.Controls.WindowsToolsStatus.Text=if($info.IsAdministrator){'Administrator tools enabled. Apply only the changes you choose; session Restore does not undo these system changes.'}else{'Preview mode. Enable administrator tools to restart this app with Windows approval before making system changes.'}
         }
@@ -1183,7 +1189,7 @@ function Show-MacGamingPanel {
     </Style>
     <Style x:Key="Primary" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}"><Setter Property="Background" Value="#087CFA"/><Setter Property="Foreground" Value="White"/><Setter Property="Padding" Value="23,13"/></Style>
     <Style x:Key="Nav" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}"><Setter Property="Background" Value="Transparent"/><Setter Property="HorizontalContentAlignment" Value="Left"/><Setter Property="Margin" Value="0,3"/><Setter Property="Padding" Value="15,12"/><Setter Property="FontWeight" Value="Normal"/></Style>
-    <Style x:Key="Traffic" TargetType="Button"><Setter Property="Width" Value="13"/><Setter Property="Height" Value="13"/><Setter Property="Margin" Value="0,0,9,0"/><Setter Property="Padding" Value="0"/><Setter Property="Cursor" Value="Hand"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Ellipse Fill="{TemplateBinding Background}" Stroke="#16000000" StrokeThickness="1"/><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter Property="Opacity" Value="0.65"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.35"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style>
+    <Style x:Key="Traffic" TargetType="Button"><Setter Property="Width" Value="30"/><Setter Property="Height" Value="30"/><Setter Property="Margin" Value="3,0,0,0"/><Setter Property="Padding" Value="0"/><Setter Property="Cursor" Value="Hand"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Grid><Ellipse Width="18" Height="18" Fill="{TemplateBinding Background}" Stroke="#16000000" StrokeThickness="1"/><TextBlock x:Name="Glyph" Text="{TemplateBinding Content}" FontFamily="Segoe MDL2 Assets" FontSize="10" Foreground="#202634" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0"/></Grid><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Glyph" Property="Opacity" Value="1"/></Trigger><Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="Glyph" Property="Opacity" Value="1"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.35"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style>
     <Style x:Key="Card" TargetType="Border"><Setter Property="Background" Value="White"/><Setter Property="CornerRadius" Value="16"/><Setter Property="BorderBrush" Value="#E5E8EE"/><Setter Property="BorderThickness" Value="1"/><Setter Property="Padding" Value="20"/></Style>
     <Style x:Key="SectionTitle" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}"><Setter Property="FontSize" Value="25"/><Setter Property="FontWeight" Value="SemiBold"/><Setter Property="Margin" Value="0,0,0,7"/></Style>
     <Style x:Key="SecondaryText" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}"><Setter Property="Foreground" Value="#7C8597"/><Setter Property="LineHeight" Value="20"/></Style>
@@ -1206,13 +1212,13 @@ function Show-MacGamingPanel {
     <Grid>
       <Grid.RowDefinitions><RowDefinition Height="51"/><RowDefinition Height="*"/><RowDefinition Height="34"/></Grid.RowDefinitions>
       <Border x:Name="TitleBar" Grid.Row="0" Background="#F5F6F9" CornerRadius="18,18,0,0" BorderBrush="#E2E5EC" BorderThickness="0,0,0,1">
-        <Grid Margin="20,0"><StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left"><Button x:Name="CloseWindow" Style="{StaticResource Traffic}" Background="#FF6059" ToolTip="Close"/><Button x:Name="MinimizeWindow" Style="{StaticResource Traffic}" Background="#FFBD2E" ToolTip="Minimize"/><Button x:Name="MaximizeWindow" Style="{StaticResource Traffic}" Background="#28C840" ToolTip="Maximize or restore"/></StackPanel><TextBlock Text="Framewell 3.1.1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="12" Foreground="#667184"/><TextBlock Text="YOUR PC. YOUR SESSION." HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="9" Foreground="#939BAA"/></Grid>
+        <Grid Margin="20,0"><TextBlock Text="Framewell" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="13" Foreground="#667184"/><StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right"><Button x:Name="MinimizeWindow" Content="&#xE921;" Style="{StaticResource Traffic}" Background="#FFBD2E" ToolTip="Minimize" AutomationProperties.Name="Minimize"/><Button x:Name="MaximizeWindow" Content="&#xE922;" Style="{StaticResource Traffic}" Background="#28C840" ToolTip="Maximize or restore" AutomationProperties.Name="Maximize or restore"/><Button x:Name="CloseWindow" Content="&#xE8BB;" Style="{StaticResource Traffic}" Background="#FF6059" ToolTip="Close" AutomationProperties.Name="Close"/></StackPanel></Grid>
       </Border>
       <Grid x:Name="MainWorkspace" Grid.Row="1">
         <Grid.ColumnDefinitions><ColumnDefinition Width="190"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
         <Border Grid.Column="0" Background="#F0F2F6" BorderBrush="#E1E5EC" BorderThickness="0,0,1,0">
           <Grid Margin="14,24,14,18"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
-            <StackPanel Margin="9,0,0,28"><Border Width="44" Height="44" CornerRadius="13" Background="#087CFA" HorizontalAlignment="Left"><Viewbox Margin="9"><Canvas Width="32" Height="24"><Path Fill="White" Data="M8,3 L24,3 C28,3 30,7 31,17 C32,23 27,25 22,18 L10,18 C5,25 0,23 1,17 C2,7 4,3 8,3 Z"/><Path Stroke="#087CFA" StrokeThickness="2.4" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M9,8 L9,14 M6,11 L12,11"/><Ellipse Canvas.Left="21" Canvas.Top="8" Width="3" Height="3" Fill="#087CFA"/><Ellipse Canvas.Left="25" Canvas.Top="12" Width="3" Height="3" Fill="#087CFA"/></Canvas></Viewbox></Border><TextBlock Text="Framewell" FontSize="18" FontWeight="SemiBold" Margin="0,14,0,4"/><TextBlock Text="A little less background." FontSize="11" Foreground="#8B93A3"/></StackPanel>
+            <StackPanel Margin="9,0,0,28"><Border Width="44" Height="44" CornerRadius="13" Background="#087CFA" HorizontalAlignment="Left"><Viewbox Margin="9"><Canvas Width="32" Height="24"><Path Fill="White" Data="M8,3 L24,3 C28,3 30,7 31,17 C32,23 27,25 22,18 L10,18 C5,25 0,23 1,17 C2,7 4,3 8,3 Z"/><Path Stroke="#087CFA" StrokeThickness="2.4" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M9,8 L9,14 M6,11 L12,11"/><Ellipse Canvas.Left="21" Canvas.Top="8" Width="3" Height="3" Fill="#087CFA"/><Ellipse Canvas.Left="25" Canvas.Top="12" Width="3" Height="3" Fill="#087CFA"/></Canvas></Viewbox></Border><TextBlock Text="Framewell" FontSize="18" FontWeight="SemiBold" Margin="0,14,0,4"/><TextBlock Text="Gaming workspace" FontSize="11" Foreground="#8B93A3"/></StackPanel>
             <StackPanel Grid.Row="1"><TextBlock Text="WORKSPACE" FontSize="9" FontWeight="SemiBold" Foreground="#969EAC" Margin="13,0,0,8"/><Button x:Name="NavOverview" Style="{StaticResource Nav}"><StackPanel Orientation="Horizontal"><TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE80F;" Width="27"/><TextBlock Text="Overview"/></StackPanel></Button><Button x:Name="NavGames" Style="{StaticResource Nav}"><StackPanel Orientation="Horizontal"><TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE7FC;" Width="27"/><TextBlock Text="Games"/></StackPanel></Button><Button x:Name="NavPerformance" Style="{StaticResource Nav}"><StackPanel Orientation="Horizontal"><TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE9D9;" Width="27"/><TextBlock Text="Performance"/></StackPanel></Button><Button x:Name="NavNetwork" Style="{StaticResource Nav}"><StackPanel Orientation="Horizontal"><TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE701;" Width="27"/><TextBlock Text="Network"/></StackPanel></Button></StackPanel>
             <StackPanel Grid.Row="3" Margin="10,0"><TextBlock Text="APPEARANCE" FontSize="9" FontWeight="SemiBold" Foreground="#969EAC" Margin="0,0,0,8"/><ComboBox x:Name="AppearanceTheme" Margin="0,0,0,18"><ComboBoxItem Content="Dark"/><ComboBoxItem Content="Light"/></ComboBox><Border Height="1" Background="#DDE2EA" Margin="0,0,0,17"/><TextBlock x:Name="SidebarComputer" Text="THIS PC" FontSize="11" FontWeight="SemiBold"/><TextBlock Text="Changes you can undo." FontSize="11" Foreground="#9098A7" Margin="0,5,0,0"/></StackPanel>
           </Grid>
@@ -1223,7 +1229,7 @@ function Show-MacGamingPanel {
               <DockPanel Margin="0,0,0,18"><Button x:Name="RefreshDashboard" DockPanel.Dock="Right" Content="Refresh" Padding="14,8" VerticalAlignment="Top"/><StackPanel><TextBlock Text="Overview" Style="{StaticResource SectionTitle}"/><TextBlock Text="Your games, your settings, one workspace." Style="{StaticResource SecondaryText}"/></StackPanel></DockPanel>
               <Border CornerRadius="19" Padding="23" BorderBrush="#D9E5F5" BorderThickness="1"><Border.Background><LinearGradientBrush StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#ECF5FF" Offset="0"/><GradientStop Color="#F6F8FF" Offset="1"/></LinearGradientBrush></Border.Background><StackPanel><Border Background="#DDEBFC" CornerRadius="6" Padding="8,4" HorizontalAlignment="Left"><TextBlock x:Name="ModeBadge" Text="NORMAL MODE" Foreground="#3679C4" FontSize="9" FontWeight="Bold"/></Border><TextBlock x:Name="HeroTitle" Text="Ready when you are." FontSize="29" FontWeight="SemiBold" Margin="0,14,0,8"/><TextBlock x:Name="HeroSubtitle" Text="Clear optional background work and give your game room to run. Steam and Discord stay open." Foreground="#697B93" MaxWidth="575" HorizontalAlignment="Left" LineHeight="20"/><StackPanel Orientation="Horizontal" Margin="0,21,0,0"><Button x:Name="ToggleMode" Content="Turn Gaming Mode On" Style="{StaticResource Primary}"/><Button x:Name="ReapplyMode" Content="Apply again" Margin="10,0,0,0" Visibility="Collapsed" Background="#E0EAF7"/></StackPanel></StackPanel></Border>
               <UniformGrid Columns="3" Margin="0,15,0,17"><Border Style="{StaticResource Card}" Margin="0,0,10,0"><StackPanel><TextBlock Text="PROCESSES" FontSize="9" FontWeight="SemiBold" Foreground="#919BAD"/><TextBlock x:Name="ProcessCount" Text="--" FontSize="30" FontWeight="SemiBold" Margin="0,7,0,3"/><TextBlock Text="Current snapshot" FontSize="11" Foreground="#969EAD"/></StackPanel></Border><Border Style="{StaticResource Card}" Margin="0,0,10,0"><StackPanel><TextBlock Text="MEMORY" FontSize="9" FontWeight="SemiBold" Foreground="#919BAD"/><TextBlock x:Name="MemoryCount" Text="-- GB" FontSize="27" FontWeight="SemiBold" Margin="0,8,0,4"/><TextBlock x:Name="MemoryTotal" Text="Checking usage" FontSize="10" Foreground="#969EAD"/><ProgressBar x:Name="MemoryMeter" Minimum="0" Maximum="100" Height="3" Foreground="#6CAEFF" Background="#EDF2F9" BorderThickness="0" Margin="0,9,0,0"/></StackPanel></Border><Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="DISPLAY" FontSize="9" FontWeight="SemiBold" Foreground="#919BAD"/><TextBlock x:Name="RefreshCount" Text="-- Hz" FontSize="27" FontWeight="SemiBold" Margin="0,8,0,4"/><TextBlock Text="Selected refresh rate" FontSize="10" Foreground="#969EAD"/></StackPanel></Border></UniformGrid>
-              <Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="Your session, restored." FontSize="16" FontWeight="SemiBold"/><TextBlock Text="Bring back everything Framewell closed, or start streaming and downloads on their own." Style="{StaticResource SecondaryText}" Margin="0,7,0,14"/><UniformGrid Columns="2"><Button x:Name="RestoreNormal" Content="Restore Normal Mode" Margin="0,0,10,0"/><Button x:Name="StartMedia" Content="Start Media Stack"/></UniformGrid><TextBlock x:Name="MediaSummary" Foreground="#959EAD" FontSize="11" Margin="0,12,0,0"/></StackPanel></Border>
+              <Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="Restore your session" FontSize="16" FontWeight="SemiBold"/><TextBlock Text="Restore supported apps from your last session, or open an app profile." Style="{StaticResource SecondaryText}" Margin="0,7,0,14"/><UniformGrid Columns="2"><Button x:Name="RestoreNormal" Content="Restore Normal Mode" Margin="0,0,10,0"/><Button x:Name="StartMedia" Content="Start Media Stack"/></UniformGrid><TextBlock x:Name="MediaSummary" Foreground="#959EAD" FontSize="11" Margin="0,12,0,0"/></StackPanel></Border>
               <Expander x:Name="ResultPanel" Header="Session report" Visibility="Collapsed" Margin="1,14,0,0" Foreground="#657185"><TextBox x:Name="ResultText" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" MaxHeight="150" Margin="0,10,0,0" FontSize="11"/></Expander>
               <TextBlock x:Name="LastChange" Text="Your measured before-and-after count will appear after activation." Foreground="#939CAD" FontSize="10" Margin="2,16,0,0"/>
               <Expander Header="What Framewell closes" Margin="1,13,0,0" Foreground="#788497" FontSize="11"><StackPanel Margin="0,10,0,0"><TextBlock x:Name="AppsSummary" Text="Checking open apps..." Foreground="#7D899B"/><TextBlock Text="Media streaming and downloads stop. Save work first. Browsers waiting for a save prompt stay open. Windows, security, drivers, networking, active games, Steam and Discord are preserved." Foreground="#929CAD" Margin="0,8,0,0" LineHeight="18"/></StackPanel></Expander>
@@ -1272,18 +1278,16 @@ function Show-MacGamingPanel {
     $controls = @{}
     foreach ($match in [regex]::Matches($xaml.OuterXml, 'x:Name="([^"]+)"')) { $name = $match.Groups[1].Value; $controls[$name] = $window.FindName($name) }
     $ui = @{Window=$window;Controls=$controls;Busy=$false;Active=$false;CurrentPage='Overview';Games=@();Actions=@{};Dashboard=$null;ThemeTokens=$themedXaml.Tokens;Theme='Dark';ApplyingTheme=$false;Profiles=@();CurrentProfile=$null;ProfileComponents=$null;LoadingNvidia=$false;NvidiaTouched=@{};NvidiaProfile=$null;NvidiaExecutable='';CloseAfterActivation=$true}
+    Initialize-FramewellReads $ui
     Add-MacGamingV2Controls $ui
     Add-MacGamingV3Controls $ui
+    Add-FramewellUpdateControls $ui
     $initialPreferences = Get-GamingPreferences
     Apply-MacGamingTheme $ui ([string]$initialPreferences.Theme)
     $previousStatusCallback = $script:GamingStatusCallback
     $script:GamingStatusCallback = { param($message) Set-MacGamingStatus $ui ([string]$message) }.GetNewClosure()
 
-    $ui.Actions.Refresh = {
-        $currentUI = $ui
-        $operation = { Update-MacGamingDashboard $currentUI }.GetNewClosure()
-        $null = Invoke-MacGamingBusy $ui $operation 'Refreshing your PC snapshot...' 'Snapshot refreshed.'
-    }.GetNewClosure()
+    $ui.Actions.Refresh = { Request-FramewellDashboard $ui }.GetNewClosure()
     $ui.Actions.Enter = {
         $operation = { Invoke-GamingAction 'Enter' }
         $null = Invoke-MacGamingBusy $ui $operation 'Saving your session and clearing optional background work...' 'Gaming Mode is on.' -CloseOnSuccess -RefreshDashboard
@@ -1297,11 +1301,7 @@ function Show-MacGamingPanel {
         $null = Invoke-MacGamingBusy $ui $operation 'Starting streaming, requests and downloads...' 'Your media stack is ready.' -RefreshDashboard
     }.GetNewClosure()
     $ui.Actions.Toggle = { if ($ui.Active) { & $ui.Actions.Restore } else { & $ui.Actions.Enter } }.GetNewClosure()
-    $ui.Actions.LoadGames = {
-        $currentUI = $ui
-        $operation = { Update-MacGamingGameList $currentUI -Reload }.GetNewClosure()
-        $null = Invoke-MacGamingBusy $ui $operation 'Reading your installed games...' 'Game library refreshed.'
-    }.GetNewClosure()
+    $ui.Actions.LoadGames = { Request-FramewellGames $ui }.GetNewClosure()
     $ui.Actions.AddGame = {
         try { $null = Add-GamingGame; Update-MacGamingGameList $ui -Reload; Set-MacGamingStatus $ui 'Game library updated.' }
         catch { Set-MacGamingStatus $ui $_.Exception.Message }
@@ -1311,11 +1311,7 @@ function Show-MacGamingPanel {
         if($result -and $result.Success){Update-MacGamingGameList $ui -Reload;if($result.Message){Set-MacGamingStatus $ui ([string]$result.Message)}}
         try{$scan=Get-GamingScanReport;$ui.Controls.ScanInfo.Text=[string]$scan.Message;if($scan.Warnings){$ui.Controls.ScanInfo.Text+=' '+(@($scan.Warnings)-join ' ')}}catch{}
     }.GetNewClosure()
-    $ui.Actions.LoadProfiles = {
-        $currentUI=$ui
-        $operation={Update-MacGamingProfiles $currentUI}.GetNewClosure()
-        $null=Invoke-MacGamingBusy $ui $operation 'Reading profiles and running components...' 'Profiles refreshed.' -InlineResult
-    }.GetNewClosure()
+    $ui.Actions.LoadProfiles = { Request-FramewellProfiles $ui }.GetNewClosure()
     $ui.Actions.Launch = {
         $selected = $ui.Controls.GameList.SelectedItem
         if (-not $selected) { return }
@@ -1358,12 +1354,12 @@ function Show-MacGamingPanel {
     $controls.MaximizeWindow.Add_Click({ $ui.Window.WindowState = if ($ui.Window.WindowState -eq 'Maximized') { 'Normal' } else { 'Maximized' } }.GetNewClosure())
     $controls.TitleBar.Add_MouseLeftButtonDown({ param($sender,$eventArgs) if ($eventArgs.ClickCount -eq 2) { $ui.Window.WindowState = if ($ui.Window.WindowState -eq 'Maximized') { 'Normal' } else { 'Maximized' } } else { $ui.Window.DragMove() } }.GetNewClosure())
     $window.Add_Closing({ param($sender,$eventArgs) if ($ui.Busy) { $eventArgs.Cancel = $true } }.GetNewClosure())
-    $window.Add_Closed({try{Remove-MacGamingEmbeddedOptimizer $ui}catch{}}.GetNewClosure())
+    $window.Add_Closed({Stop-FramewellReads $ui;try{Remove-MacGamingEmbeddedOptimizer $ui}catch{}}.GetNewClosure())
     $controls.NavOverview.Add_Click({ Set-MacGamingPage $ui 'Overview' }.GetNewClosure())
     $controls.NavGames.Add_Click({ Set-MacGamingPage $ui 'Games'; if (-not $ui.Games.Count) { & $ui.Actions.LoadGames } }.GetNewClosure())
     $controls.NavProfiles.Add_Click({ Set-MacGamingPage $ui 'Profiles';if(-not $ui.Profiles.Count){& $ui.Actions.LoadProfiles} }.GetNewClosure())
-    $controls.NavPerformance.Add_Click({ Set-MacGamingPage $ui 'Performance';try{Update-MacGamingWindowsSettings $ui -IncludeDisplay}catch{Set-MacGamingStatus $ui $_.Exception.Message} }.GetNewClosure())
-    $controls.NavNetwork.Add_Click({ Set-MacGamingPage $ui 'Network';try{Update-MacGamingServers $ui -ReloadGames}catch{Set-MacGamingStatus $ui $_.Exception.Message} }.GetNewClosure())
+    $controls.NavPerformance.Add_Click({ Set-MacGamingPage $ui 'Performance';try{Request-FramewellWindowsSettings $ui}catch{Set-MacGamingStatus $ui $_.Exception.Message} }.GetNewClosure())
+    $controls.NavNetwork.Add_Click({ Set-MacGamingPage $ui 'Network';try{Request-FramewellNetwork $ui}catch{Set-MacGamingStatus $ui $_.Exception.Message} }.GetNewClosure())
     $controls.NavSettings.Add_Click({ Set-MacGamingPage $ui 'Settings';try{Update-MacGamingSettings $ui}catch{Set-MacGamingStatus $ui $_.Exception.Message} }.GetNewClosure())
     $controls.ToggleMode.Add_Click({ & $ui.Actions.Toggle }.GetNewClosure())
     $controls.ReapplyMode.Add_Click({ & $ui.Actions.Enter }.GetNewClosure())
@@ -1425,10 +1421,11 @@ function Show-MacGamingPanel {
     $window.Add_ContentRendered({
         Set-MacGamingPage $ui 'Overview'
         & $ui.Actions.Refresh
+        if($ui.Controls.AutomaticUpdates.IsChecked){Start-FramewellUpdateCheck $ui -Download -Automatic}
         if ($InitialAction -in @('Enter','Restore','Media')) { & $ui.Actions[$InitialAction] }
         elseif($InitialAction -eq 'WindowsTools'){Show-MacGamingWindowsTools $ui}
         elseif($InitialAction -eq 'Games'){Set-MacGamingPage $ui 'Games';& $ui.Actions.LoadGames}
-        elseif($InitialAction -eq 'Performance'){Set-MacGamingPage $ui 'Performance';try{Update-MacGamingWindowsSettings $ui -IncludeDisplay}catch{Set-MacGamingStatus $ui $_.Exception.Message}}
+        elseif($InitialAction -eq 'Performance'){Set-MacGamingPage $ui 'Performance';try{Request-FramewellWindowsSettings $ui}catch{Set-MacGamingStatus $ui $_.Exception.Message}}
     }.GetNewClosure())
     if($CreateOnly){$script:GamingStatusCallback=$previousStatusCallback;return $ui}
     try { [void]$window.ShowDialog() }
@@ -1439,7 +1436,3 @@ function Show-MacGamingPanel {
         $window = $null
     }
 }
-
-
-
-

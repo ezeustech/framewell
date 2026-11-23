@@ -1,4 +1,4 @@
-param([string]$OutputDirectory=(Join-Path $PSScriptRoot 'dist'))
+﻿param([string]$OutputDirectory=(Join-Path $PSScriptRoot 'dist'))
 $ErrorActionPreference='Stop'
 $root=[IO.Path]::GetFullPath($PSScriptRoot)
 $output=[IO.Path]::GetFullPath($OutputDirectory)
@@ -12,7 +12,7 @@ $runtime=Join-Path $staging 'runtime';$source=Join-Path $staging 'source'
 $payload=Join-Path $runtime 'app'
 [void][IO.Directory]::CreateDirectory($payload)
 $files=@($manifest.Files)
-$sourceFiles=@($files|Where-Object {$_ -notin @('GamingMode.exe','vendor\optimizer\GamingMode.Optimizer.dll','vendor\optimizer\embedded-source.zip')})+@('Launcher.cs','Build-Launcher.ps1','Build-EmbeddedOptimizer.ps1','Build-Icon.ps1','Install-GamingMode.ps1','Build-Release.ps1','.gitignore','PortableLauncher.cs','Build-PortableLauncher.ps1','Framewell.exe.config','START HERE.txt')
+$sourceFiles=@($files|Where-Object {$_ -notin @('GamingMode.exe','Framewell.Updater.exe','vendor\optimizer\GamingMode.Optimizer.dll','vendor\optimizer\embedded-source.zip')})+@('Launcher.cs','Build-Launcher.ps1','Build-EmbeddedOptimizer.ps1','Build-Icon.ps1','Install-GamingMode.ps1','Build-Release.ps1','.gitignore','PortableLauncher.cs','Build-PortableLauncher.ps1','Build-Previews.ps1','Framewell.exe.config','START HERE.txt')
 $runtimeFiles=@($files)+@('Install-GamingMode.ps1')
 $sourceFiles+=@(Get-ChildItem -LiteralPath $root -Filter 'Test-*.ps1' -File|ForEach-Object Name)
 $sourceFiles+=@(Get-ChildItem -LiteralPath (Join-Path $root 'test-results') -Filter '*tests.ps1' -File|ForEach-Object{'test-results\'+$_.Name})

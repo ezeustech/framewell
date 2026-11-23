@@ -14,10 +14,10 @@ Windows PowerShell 5.1 and .NET Framework 4.8 components. The launcher explains
 missing components or an incomplete extraction before trying to open the app.
 
 Administrative tools request Windows approval only when you choose them.
-This is an unsigned release candidate; Windows reputation checks still apply.
+This is an unsigned early-stage release; Windows reputation checks still apply.
 
 Your settings and profiles are stored in app\state. Keep that folder when
-upgrading; do not share it publicly. The dashboard makes no changes just by
+upgrading; do not share it publicly. The dashboard applies no optimization settings just by
 opening. Choose your apps and settings before starting a gaming session.
 
 More information: app\README.md
@@ -25,3 +25,6 @@ AI-development disclosure: app\AI_TRANSPARENCY.md
 Licenses and credits: app\THIRD-PARTY-NOTICES.txt
 
 Previously called Gaming Mode. Existing profiles remain compatible.
+
+Automatic updates are on by default. Change this in Settings. Verified updates
+install after you close the app, preserving profiles and restore data.

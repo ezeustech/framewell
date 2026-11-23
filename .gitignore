@@ -16,5 +16,6 @@ bin/
 obj/
 GamingMode.exe
 Framewell.exe
+Framewell.Updater.exe
 vendor/optimizer/GamingMode.Optimizer.dll
 vendor/optimizer/embedded-source.zip

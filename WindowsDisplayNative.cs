@@ -1,8 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 public sealed class GamingDisplayMode {
- public string DeviceName,Key,Label;public uint Width,Height,RefreshHz,BitsPerPixel;public bool IsCurrent;
+ public string DeviceName {get;set;} public string Key {get;set;} public string Label {get;set;}
+ public uint Width {get;set;} public uint Height {get;set;} public uint RefreshHz {get;set;} public uint BitsPerPixel {get;set;} public bool IsCurrent {get;set;}
 }
 public static class GamingWindowsDisplay {
  [StructLayout(LayoutKind.Sequential,CharSet=CharSet.Unicode)] struct Device {

@@ -1,4 +1,4 @@
-$ErrorActionPreference='Stop'
+﻿$ErrorActionPreference='Stop'
 if(-not(Test-Path -LiteralPath (Join-Path $PSScriptRoot 'vendor\optimizer\GamingMode.Optimizer.dll'))){
     & (Join-Path $PSScriptRoot 'Build-EmbeddedOptimizer.ps1') | Out-Null
 }
@@ -8,10 +8,11 @@ $parameters.CompilerOptions='/platform:x64 /optimize+ /target:winexe /win32icon:
 $parameters.GenerateExecutable=$true
 $parameters.GenerateInMemory=$false
 $parameters.OutputAssembly=Join-Path $PSScriptRoot 'GamingMode.exe'
-$parameters.ReferencedAssemblies.AddRange(@($assembly,'System.Windows.Forms.dll','System.Core.dll','System.dll'))
+$parameters.ReferencedAssemblies.AddRange(@($assembly,'System.Windows.Forms.dll','System.Core.dll','System.dll','System.Net.Http.dll','System.Web.Extensions.dll','System.IO.Compression.dll','System.IO.Compression.FileSystem.dll'))
 $provider=[System.CodeDom.Compiler.CodeDomProvider]::CreateProvider('CSharp')
 try{
     $sources=@((Get-Content -LiteralPath (Join-Path $PSScriptRoot 'Launcher.cs') -Raw))
+    $sources+=@((Get-Content -LiteralPath (Join-Path $PSScriptRoot 'FramewellUpdates.cs') -Raw))
     # Compile native metric/settings types once, rather than starting csc at each dashboard launch.
     foreach($module in @('Performance.ps1','SessionExtras.ps1','NetworkDiagnostics.ps1')){
         $body=Get-Content -LiteralPath (Join-Path $PSScriptRoot $module) -Raw
@@ -26,3 +27,4 @@ try{
     if($build.Errors.HasErrors){throw (($build.Errors | ForEach-Object ToString) -join "`n")}
 }finally{$provider.Dispose()}
 & (Join-Path $PSScriptRoot 'Build-PortableLauncher.ps1')
+& (Join-Path $PSScriptRoot 'Build-Updater.ps1')
