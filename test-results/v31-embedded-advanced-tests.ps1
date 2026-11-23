@@ -1,4 +1,4 @@
-param([string]$AppRoot=(Split-Path $PSScriptRoot -Parent))
+﻿param([string]$AppRoot=(Split-Path $PSScriptRoot -Parent))
 $ErrorActionPreference='Stop'
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
@@ -31,7 +31,7 @@ Assert ($allow[0].Remove -and $allow[0].ValueName -eq 'Debugger') 'Process allow
 foreach($bad in @('C:\Games\bad.exe','..\bad.exe','game.exe /silent','game.exe\Nested','../bad.exe','','game','*game.exe','a..b.exe')){
     Expect-Failure {Invoke-Plan 3 32 $bad} ('Unsafe process input rejected: '+$bad)
 }
-foreach($protected in @('lsass.exe','svchost.exe','MSMPENG.EXE','cmd.exe','powershell.exe','GamingMode.exe','Steam.exe','discord.exe','MsSense.exe','mbamservice.exe')){
+foreach($protected in @('lsass.exe','svchost.exe','MSMPENG.EXE','cmd.exe','powershell.exe','GamingMode.exe','Framewell.exe','Steam.exe','discord.exe','MsSense.exe','mbamservice.exe')){
     Expect-Failure {Invoke-Plan 3 32 $protected} ('Protected process rejected: '+$protected)
 }
 $address=$actions.GetMethod('ValidateAddress',$binding)

@@ -1,11 +1,15 @@
-param([string]$Destination=(Join-Path $env:LOCALAPPDATA 'Programs\Gaming Mode'),[switch]$SkipShortcuts)
+param([string]$Destination,[switch]$SkipShortcuts)
 $ErrorActionPreference='Stop'
+if(-not $Destination){
+    $legacy=Join-Path $env:LOCALAPPDATA 'Programs\Gaming Mode'
+    $Destination=if(Test-Path -LiteralPath (Join-Path $legacy 'GamingMode.exe')){$legacy}else{Join-Path $env:LOCALAPPDATA 'Programs\Framewell'}
+}
 $source=[IO.Path]::GetFullPath($PSScriptRoot)
 $destinationPath=[IO.Path]::GetFullPath($Destination)
 if($destinationPath -eq [IO.Path]::GetPathRoot($destinationPath)){throw 'Installation cannot target a drive root.'}
-if($destinationPath.TrimEnd('\') -ieq $source.TrimEnd('\')){throw 'Choose a destination different from the extracted installer folder, or run GamingMode.exe portably.'}
+if($destinationPath.TrimEnd('\') -ieq $source.TrimEnd('\')){throw 'Choose a different installation destination, or open Framewell.exe from the extracted portable folder.'}
 $running=@(Get-CimInstance Win32_Process -Filter "Name = 'GamingMode.exe'" -ErrorAction SilentlyContinue|Where-Object {$_.ExecutablePath -ieq (Join-Path $destinationPath 'GamingMode.exe')})
-if($running.Count){throw 'Close Gaming Mode before updating this installation. Your active session journal is preserved.'}
+if($running.Count){throw 'Close Framewell before updating this installation. Your active session journal is preserved.'}
 if(-not(Test-Path -LiteralPath $destinationPath)){New-Item -ItemType Directory -Path $destinationPath -Force | Out-Null}
 $files=@((Get-Content -LiteralPath (Join-Path $source 'runtime-files.json') -Raw|ConvertFrom-Json).Files)
 foreach($file in $files){
@@ -40,7 +44,7 @@ $desktop=[Environment]::GetFolderPath('Desktop')
 $shell=New-Object -ComObject WScript.Shell
 $launcher=Join-Path $destinationPath 'GamingMode.exe'
 $definitions=if($SkipShortcuts){@()}else{@(
-    @{Name='Gaming Mode';Action='Panel';Description='Gaming dashboard, game launcher and reversible optimizations. Keeps Steam and Discord.';Icon=(Join-Path $destinationPath 'GamingMode.ico')},
+    @{Name='Framewell';Action='Panel';Description='Gaming dashboard, game launcher and reversible optimizations. Keeps Steam and Discord.';Icon=(Join-Path $destinationPath 'GamingMode.ico')},
     @{Name='Restore Normal Mode';Action='Restore';Description='Restore apps and media services closed by Gaming Mode.';Icon="$env:WINDIR\System32\imageres.dll,84"},
     @{Name='Start Media Stack';Action='Media';Description='Start your saved Media stack profile.';Icon=(Join-Path $destinationPath 'GamingMode.ico')}
 )}

@@ -1,4 +1,4 @@
-// Gaming Mode adaptation, 2026. GPL-3.0: native controls for Optimizer's CLI-only actions.
+﻿// Framewell adaptation, 2026. GPL-3.0: native controls for Optimizer's CLI-only actions.
 // Opening this panel only constructs controls and reads the local restore journal.
 using Microsoft.Win32;
 using Newtonsoft.Json;
@@ -69,7 +69,7 @@ namespace Optimizer {
                 || name.Contains("..") || Path.GetFileName(name) != name)
                 throw new ArgumentException("Enter an executable filename such as ExampleGame.exe, without a path or arguments.");
             string[] protectedNames = {
-                "gamingmode.exe", "optimizer.exe", "codex.exe", "chatgpt.exe", "explorer.exe", "steam.exe", "discord.exe",
+                "gamingmode.exe", "framewell.exe", "optimizer.exe", "codex.exe", "chatgpt.exe", "explorer.exe", "steam.exe", "discord.exe",
                 "system.exe", "registry.exe", "smss.exe", "csrss.exe", "wininit.exe", "services.exe", "lsass.exe", "winlogon.exe",
                 "svchost.exe", "dwm.exe", "sihost.exe", "taskhostw.exe", "userinit.exe", "logonui.exe", "fontdrvhost.exe",
                 "cmd.exe", "powershell.exe", "pwsh.exe", "reg.exe", "regedit.exe", "taskkill.exe", "taskmgr.exe",
@@ -80,7 +80,7 @@ namespace Optimizer {
             };
             if (protectedNames.Contains(name, StringComparer.OrdinalIgnoreCase)
                 || string.Equals(Process.GetCurrentProcess().ProcessName + ".exe", name, StringComparison.OrdinalIgnoreCase))
-                throw new ArgumentException("Windows, security, Gaming Mode, Steam and Discord executables are protected. Choose an app you own.");
+                throw new ArgumentException("Windows, security, Framewell, Steam and Discord executables are protected. Choose an app you own.");
             string windows = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
             foreach (string folder in new[] { windows, Path.Combine(windows, "System32"), Path.Combine(windows, "SysWOW64") })
                 if (File.Exists(Path.Combine(folder, name)))
@@ -173,7 +173,7 @@ namespace Optimizer {
 
         static void Write(EmbeddedValueSnapshot s)
         {
-            if (!IsAdministrator) throw new InvalidOperationException("Open Gaming Mode as administrator before changing these settings.");
+            if (!IsAdministrator) throw new InvalidOperationException("Open Framewell as administrator before changing these settings.");
             ValidateAddress(s.KeyPath, s.ValueName);
             using (RegistryKey hive = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)) {
                 if (s.Exists) using (RegistryKey key = hive.CreateSubKey(s.KeyPath)) key.SetValue(s.ValueName, Decode(s), (RegistryValueKind)s.Kind);
@@ -266,7 +266,7 @@ namespace Optimizer {
             var layout = new TableLayoutPanel { Dock = DockStyle.Top, AutoSize = true, ColumnCount = 1, RowCount = 9, Padding = new Padding(0, 0, 10, 12) };
             layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
             layout.Controls.Add(new Label { Text = "CPU & process controls", Font = new Font(Font.FontFamily, 16, FontStyle.Bold), AutoSize = true, Margin = new Padding(0, 0, 0, 12) });
-            layout.Controls.Add(new Label { Text = "Advanced Optimizer actions run inside Gaming Mode. Each change is optional, affects Windows globally, and has its own restore record.", AutoSize = true, MaximumSize = new Size(850, 0), Margin = new Padding(0, 0, 0, 12) });
+            layout.Controls.Add(new Label { Text = "Advanced Optimizer actions run inside Framewell. Each change is optional, affects Windows globally, and has its own restore record.", AutoSize = true, MaximumSize = new Size(850, 0), Margin = new Padding(0, 0, 0, 12) });
             layout.Controls.Add(_action);
             var inputs = new FlowLayoutPanel { AutoSize = true, Dock = DockStyle.Fill, WrapContents = true, Margin = new Padding(0, 12, 0, 12) };
             inputs.Controls.Add(new Label { Text = "RAM threshold (GB)", AutoSize = true, Padding = new Padding(0, 5, 0, 0) }); inputs.Controls.Add(_ram);
@@ -281,7 +281,7 @@ namespace Optimizer {
             _apply.Click += Apply_Click; _restore.Click += Restore_Click;
             _action.SelectedIndex = 0;
             _restore.Enabled = EmbeddedAdvancedActions.IsAdministrator;
-            _status.Text = EmbeddedAdvancedActions.IsAdministrator ? "No change is made until you apply and confirm the preview." : "Read-only preview. Open Gaming Mode as administrator to apply or restore these changes.";
+            _status.Text = EmbeddedAdvancedActions.IsAdministrator ? "No change is made until you apply and confirm the preview." : "Read-only preview. Open Framewell as administrator to apply or restore these changes.";
         }
 
         void RefreshPreview()

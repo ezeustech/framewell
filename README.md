@@ -1,29 +1,31 @@
-<div align="center">
+﻿<div align="center">
 
-# Gaming Mode
+# Framewell
 
 **Your PC. Your session.**
 
 A configurable Windows dashboard for gaming sessions, app profiles, performance experiments, and system tools.
 
 ![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D4?style=flat-square)
-![Status](https://img.shields.io/badge/status-3.1%20release%20candidate-F0B44D?style=flat-square)
+![Status](https://img.shields.io/badge/status-3.1.1%20release%20candidate-F0B44D?style=flat-square)
 ![License](https://img.shields.io/badge/license-GPL--3.0-65B890?style=flat-square)
 ![Development](https://img.shields.io/badge/development-AI--assisted-9678D3?style=flat-square)
 
-[Get started](#get-started) · [Features](#features) · [Build](#build-from-source) · [AI transparency](AI_TRANSPARENCY.md) · [Technical guide](docs/ARCHITECTURE.md)
+**[Download for Windows](https://github.com/ezeustech/framewell/releases/download/v3.1.1-rc1/Framewell-3.1.1-rc1-win-x64.zip)** · [Get started](#get-started) · [Features](#features) · [Build](#build-from-source) · [AI transparency](AI_TRANSPARENCY.md) · [Technical guide](docs/ARCHITECTURE.md)
 
 </div>
 
-Gaming Mode brings session controls and Windows tools into one desktop app. Choose what closes while you play, restore supported apps afterward, tune individual games, and keep separate configurations for different tasks. The interface uses compact widgets, a restrained layout, and 33 selectable color palettes.
+Framewell brings session controls and Windows tools into one desktop app. Choose what closes while you play, restore supported apps afterward, tune individual games, and keep separate configurations for different tasks. The interface uses compact widgets, a restrained layout, and 33 selectable color palettes.
 
-**3.1 integrates Optimizer directly into the app.** Its Windows tools run in the same process, with embedded navigation and native dialogs. NVIDIA Control Panel remains available as an external vendor tool.
+**Previously called Gaming Mode, now Framewell.** Version 3.1.1 brings a simple portable download: extract the ZIP and double-click `Framewell.exe`. No installer or terminal commands are needed to open the dashboard.
+
+**Optimizer runs directly inside the app.** Its Windows tools run in the same process, with embedded navigation and native dialogs. NVIDIA Control Panel remains available as an external vendor tool.
 
 This is an **unsigned release candidate**. It has been developed and tested on one Windows 11 PC with isolated regression tests; broad hardware and game compatibility has not been established. There are no promised FPS gains or universal “best settings.”
 
 ## Preview
 
-![Gaming Mode overview](docs/images/overview-oled.png)
+![Framewell overview](docs/images/overview-oled.png)
 
 *Actual interface rendered with demonstration data. Preview values are illustrative, not benchmark results.*
 
@@ -54,16 +56,21 @@ The dashboard refreshes on demand. It installs no permanent background service. 
 
 ## Get started
 
-Requirements: **Windows 10/11 x64**, **Windows PowerShell 5.1**, and **.NET Framework 4.8**. NVIDIA features require a compatible NVIDIA GPU and installed driver. Individual Windows tools have additional OS and administrator requirements.
+1. **[Download Framewell for Windows](https://github.com/ezeustech/framewell/releases/download/v3.1.1-rc1/Framewell-3.1.1-rc1-win-x64.zip).** Choose the `win-x64.zip` release asset.
+2. **Extract the entire ZIP** to a writable local folder, such as a folder in Documents. Use Windows **Extract All** rather than opening the EXE inside the ZIP.
+3. **Double-click `Framewell.exe`.** Keep the `app` folder beside it.
 
-1. Download the `GamingMode-3.1.0-rc1-win-x64.zip` release asset and extract it to a writable local folder.
-2. Run `GamingMode.exe`. Keep the accompanying scripts and `vendor` folder together.
-3. Choose the apps and profiles you want to use before activating a session. Add games the scanner misses using **Add EXE** or **Scan folder**.
-4. Optional: run `Install-GamingMode.ps1` in Windows PowerShell to install under `%LOCALAPPDATA%\Programs\Gaming Mode` and create desktop shortcuts.
+```text
+Framewell.exe       ← open this
+START HERE.txt
+app/                ← included support files; keep this folder
+```
 
-The installer preserves existing local state. Startup opens the dashboard; it does not automatically enable Gaming Mode. Administrator controls explicitly restart the app with Windows approval when needed.
+No installer, compilation, PowerShell command, or administrator approval is needed just to open the dashboard. Choose your apps and profiles before turning Gaming Mode on. Add games the scanner misses with **Add EXE** or **Scan folder**. Individual system-changing actions may request Windows administrator approval when selected.
 
-For upgrades, close the dashboard and run the new installer against the same installation directory. Keep a backup of `state` if you want to preserve your own profiles across a manual reinstall. **Do not upload that directory.**
+**Supported platform:** Windows 11 x64, or Windows 10 version 1903 or later with **.NET Framework 4.8+** and **Windows PowerShell 5.1** available. These runtimes are included in standard installations of those Windows versions. NVIDIA features need a compatible GPU and installed driver; FPS capture needs a supported PresentMon installation. Individual Windows tools have additional OS and privilege requirements. The portable build is unsigned, so Windows may show a publisher/reputation warning.
+
+For an update, close Framewell and extract the new portable ZIP into the same folder, keeping your existing `app/state` folder. Profiles from the older Gaming Mode layout remain compatible; see [upgrading and local state](docs/ARCHITECTURE.md#state-and-packaging). Never upload a personal state folder to a public issue.
 
 ## Know what each control changes
 
@@ -87,7 +94,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Build-Release.ps1
 
 The embedded component build downloads Microsoft's pinned Roslyn 4.8 compiler package from NuGet and verifies its SHA-256 before extraction. The launcher uses the installed .NET Framework compiler. Output archives and checksums are written to `dist`.
 
-The complete modified Optimizer source is under `vendor/optimizer/embedded-source/optimizer-17.0`. Runtime releases include that source as `vendor/optimizer/embedded-source.zip`; source releases include the editable tree and build scripts. The original upstream archive and provenance are also retained.
+The complete modified Optimizer source is under `vendor/optimizer/embedded-source/optimizer-17.0`. Portable releases include that source as `app/vendor/optimizer/embedded-source.zip`; source releases include the editable tree and build scripts. The original upstream archive and provenance are also retained.
 
 Packaging uses an explicit runtime allowlist. Personal profiles, media configuration, credentials, restore journals, logs, and cached game paths are excluded. See [architecture](docs/ARCHITECTURE.md) for component boundaries and [contributing](CONTRIBUTING.md) for testing expectations.
 
@@ -99,6 +106,6 @@ The app does not require an AI account and does not send your game library or se
 
 ## Credits and license
 
-The combined 3.1 distribution is licensed under **GPL-3.0**, with component notices preserved. The embedded Windows tools are a modified integration of [Optimizer by hellzerg and contributors](https://github.com/hellzerg/optimizer), not an independently invented replacement. Earlier original Gaming Mode code retains its MIT notice; see [LICENSE.txt](LICENSE.txt), [LICENSE-ORIGINAL-MIT.txt](LICENSE-ORIGINAL-MIT.txt), and [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt).
+The combined Framewell distribution is licensed under **GPL-3.0**, with component notices preserved. The embedded Windows tools are a modified integration of [Optimizer by hellzerg and contributors](https://github.com/hellzerg/optimizer), not an independently invented replacement. Earlier original Gaming Mode code retains its MIT notice; see [LICENSE.txt](LICENSE.txt), [LICENSE-ORIGINAL-MIT.txt](LICENSE-ORIGINAL-MIT.txt), and [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt).
 
 This project is not affiliated with or endorsed by Microsoft, NVIDIA, Apple, Optimizer's maintainers, or the franchises referenced by its color themes. No character artwork, proprietary driver, ISLC binary, or game content is bundled.

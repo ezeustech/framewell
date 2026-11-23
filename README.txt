@@ -1,18 +1,22 @@
-Gaming Mode 3.1 - Windows x64 release candidate
+﻿Framewell 3.1.1 - Windows x64 release candidate
 
 START HERE
-Run GamingMode.exe from a writable local folder. Optional installation:
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File Install-GamingMode.ps1
-The installer defaults to Local AppData/Programs/Gaming Mode, preserves existing
-state, and creates dashboard, restore and media-profile desktop shortcuts.
-Requires Windows 10/11 x64, Windows PowerShell 5.1 and .NET Framework 4.8.
-Privileged actions request Windows administrator approval only when selected.
+1. Download Framewell-3.1.1-rc1-win-x64.zip.
+2. Extract the entire ZIP to a writable local folder.
+3. Double-click Framewell.exe. Keep the app folder beside it.
+
+Opening the dashboard needs no installer, compilation, or terminal commands.
+Framewell is the new name for Gaming Mode; your existing profiles stay compatible.
+Windows 11 x64, or Windows 10 version 1903+ with .NET Framework 4.8+ and Windows
+PowerShell 5.1 available, is required. Those runtimes come with standard installs.
+Some optional features need their own driver or tool. Privileged actions request
+Windows administrator approval only when selected. This release is unsigned.
 
 OVERVIEW
 Widgets show process count, RAM, refresh rate, available/standby memory and the
 last latency result. Quick actions open games, profiles, network and memory tools.
 Refresh is on demand. No permanent service or game-watching loop is installed.
-Gaming Mode saves a journal before closing selected apps or applying session
+Framewell saves a journal before closing selected apps or applying session
 settings. Steam, Discord, active games, Windows/security, drivers and remote access
 are protected by built-in rules. Restore uses the journal and preserves identifiable
 later manual changes. Unsaved work may keep gracefully closed apps open.
@@ -30,7 +34,7 @@ NVIDIA: Performance, Quality, custom driver controls and Restore affect one game
 Shared/global/packaged associations are blocked to avoid changing other games.
 Only driver-supported controls are enabled. These presets do not set game
 resolution, DLSS, ray tracing or Reflex. Preferences persist until GPU Restore;
-Windows Gaming Mode Restore is separate. Performance favors filtering shortcuts
+Gaming-session Restore is separate. Performance favors filtering shortcuts
 and VSync off; Quality favors filtering and VSync on. Both can raise power use,
 and neither guarantees the best result for every engine, display or frame target.
 
@@ -93,7 +97,7 @@ exits the dashboard by default. If an opt-in memory feature is active, it minimi
 instead to keep that requested feature alive. Closing always stops memory tools.
 
 EMBEDDED WINDOWS TOOLS
-The Tools catalog opens Windows tools directly inside Gaming Mode. The modified
+The Tools catalog opens Windows tools directly inside Framewell. The modified
 Optimizer 17.0 library provides 16 embedded sections, including native controls
 for the upstream CLI-only CPU/process functions. No standalone Optimizer window
 is launched. Administrator activation is explicit; loading applies no tweaks.
@@ -104,7 +108,7 @@ Full modified source, GPL license and original notices accompany the release.
 See README.md, AI_TRANSPARENCY.md and THIRD-PARTY-NOTICES.txt.
 
 DISTRIBUTION
-Local state lives next to the executable. Gaming Mode installs no telemetry,
+Portable profiles live in app/state. Framewell installs no telemetry,
 account service or automatic updater. Embedded tools contact services only for selected internet features.
 Public runtime/source archives exclude personal state, snapshots, credentials,
 logs, backups and development fixtures. This is an unsigned release candidate;

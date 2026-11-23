@@ -71,7 +71,7 @@ function Get-GamingProcessExecutable {
     $path=[IO.Path]::GetFullPath([string]$game.ExecutablePath)
     if($path -notmatch '^[A-Za-z]:\\' -or [IO.Path]::GetExtension($path) -ine '.exe'){throw 'Select a local game EXE.'}
     $name=[IO.Path]::GetFileNameWithoutExtension($path)
-    if($path.StartsWith(($env:WINDIR.TrimEnd('\')+'\'),[StringComparison]::OrdinalIgnoreCase) -or $name -match '^(?i)(GamingMode|steam|discord|explorer|powershell|pwsh|cmd|conhost|msmpeng|securityhealthservice|nissrv|lsass|csrss|smss|wininit|services|svchost|winlogon|dwm|taskmgr|eac_launcher|EasyAntiCheat.*|BEService.*|vgc|vgtray|nvcontainer|nvidia.*|RiotClientServices|EADesktop|EpicGamesLauncher)$') {throw 'Choose the game renderer, not Windows, security software, this app, or a launcher.'}
+    if($path.StartsWith(($env:WINDIR.TrimEnd('\')+'\'),[StringComparison]::OrdinalIgnoreCase) -or $name -match '^(?i)(GamingMode|Framewell|steam|discord|explorer|powershell|pwsh|cmd|conhost|msmpeng|securityhealthservice|nissrv|lsass|csrss|smss|wininit|services|svchost|winlogon|dwm|taskmgr|eac_launcher|EasyAntiCheat.*|BEService.*|vgc|vgtray|nvcontainer|nvidia.*|RiotClientServices|EADesktop|EpicGamesLauncher)$') {throw 'Choose the game renderer, not Windows, security software, this app, or a launcher.'}
     return $path
 }
 function Read-GamingNativeProcess {

@@ -1,24 +1,36 @@
-Gaming Mode 3.1.0-rc1
+Framewell 3.1.1-rc1 (previously Gaming Mode)
 
-This is an unsigned Windows x64 release candidate. Read README.md,
-AI_TRANSPARENCY.md, docs/LIMITATIONS.md and docs/VALIDATION.md before distribution.
-The project has substantial AI-assisted implementation and test development.
-No independent audit or universal performance benefit is claimed.
+Portable use:
+  1. Download Framewell-3.1.1-rc1-win-x64.zip.
+  2. Extract the entire ZIP to a writable local folder.
+  3. Double-click Framewell.exe and keep the app folder beside it.
+
+No installer, compilation, or terminal commands are required to open the app.
+Support files and documentation are under app. Personal data is under app/state.
+Existing flat Gaming Mode installations retain their original state location.
 
 Assets:
-  GamingMode-3.1.0-rc1-win-x64.zip
-  GamingMode-3.1.0-rc1-source.zip
+  Framewell-3.1.1-rc1-win-x64.zip
+  Framewell-3.1.1-rc1-source.zip
   SHA256SUMS.txt
 
-The combined embedded distribution is GPL-3.0. Original/component notices are
-preserved. Runtime includes complete modified Optimizer corresponding source
-in vendor/optimizer/embedded-source.zip. Source includes the editable fork and
-build scripts. Build-EmbeddedOptimizer.ps1 verifies its pinned compiler.
+This is an unsigned Windows x64 release candidate. Windows may show a publisher
+or reputation warning. Read README.md, AI_TRANSPARENCY.md, docs/LIMITATIONS.md
+and docs/VALIDATION.md. Development and test creation used substantial AI
+assistance. No independent audit or universal performance benefit is claimed.
 
-Run from a writable local folder. Optional installation defaults to
-%LOCALAPPDATA%/Programs/Gaming Mode and preserves existing local state. Personal
-profiles, server configuration, credentials, snapshots and logs are excluded from
-public packages by an explicit allowlist. Never publish the working state folder.
+Requires Windows 11 x64, or Windows 10 version 1903 or later with .NET Framework
+4.8+ and Windows PowerShell 5.1 available. Standard installations include those
+runtimes; custom/stripped Windows installations may not. Some optional features
+require their own driver or installed tool.
+
+The combined embedded distribution is GPL-3.0. Original/component notices remain.
+The portable package includes modified Optimizer corresponding source in
+app/vendor/optimizer/embedded-source.zip. Source includes the editable fork and
+build scripts. Build-EmbeddedOptimizer.ps1 verifies its pinned compiler package.
+
+Public packages exclude personal profiles, server configuration, credentials,
+snapshots and logs by an explicit allowlist. Never publish a working state folder.
 
 Validation covers isolated tests, same-process embedding, themed layouts, clean
 installation/source builds and native read-only checks on one Windows 11 PC.
@@ -26,7 +38,7 @@ Broader OS/hardware, administrator handoff, live display changes, driver writes
 and anti-cheat compatibility still need validation. Obtain code signing and a
 broader hardware test matrix before calling this a stable general release.
 
-No automatic updater or telemetry is installed by the host. The embedded upstream
-automatic updater/feed/tray lifecycle is disabled. Explicit network tests and
-internet-connected tools contact their chosen endpoints.
+No automatic updater or telemetry is installed by the host. Embedded upstream
+automatic updater/feed/tray initialization is disabled. Explicit network tests
+and internet-connected tools contact their chosen endpoints.
 

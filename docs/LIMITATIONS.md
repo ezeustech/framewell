@@ -1,4 +1,4 @@
-# Behavior and limitations
+﻿# Behavior and limitations
 
 ## Performance
 
@@ -24,4 +24,6 @@ The built-in refresh picker currently targets the primary display at its current
 
 ## Distribution
 
-3.1.0-rc1 is unsigned and has been checked on one Windows 11 PC. Windows 10, high-DPI layouts, non-NVIDIA systems, CPUs with more than 64 logical processors, administrator transitions, and anti-cheat interactions need broader real-world validation. Source and isolated test results provide evidence, not an independent audit or certification.
+Framewell 3.1.1-rc1 is unsigned and has been checked on one Windows 11 PC. Windows 10, high-DPI layouts, non-NVIDIA systems, CPUs with more than 64 logical processors, administrator transitions, and anti-cheat interactions need broader real-world validation. Source and isolated test results provide evidence, not an independent audit or certification.
+
+The portable download opens through Framewell.exe after the complete ZIP is extracted. Keep its app folder beside it. Supported launch prerequisites are Windows 11 x64, or Windows 10 version 1903 or later with .NET Framework 4.8+ and Windows PowerShell 5.1 available. This does not make optional tools such as PresentMon or a vendor GPU driver part of the download. Windows publisher/reputation checks still apply to this unsigned candidate.

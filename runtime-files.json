@@ -1,5 +1,5 @@
 {
-  "Version": "3.1.0-rc1",
+  "Version": "3.1.1-rc1",
   "Files": [
     "GamingMode.exe",
     "GamingMode.ico",
@@ -58,6 +58,7 @@
     "docs\\images\\memory-dio-theme.png",
     "docs\\images\\overview-oled.png",
     "docs\\images\\windows-gaming-settings.png",
-    "vendor\\optimizer\\LICENSE-Poppins.txt"
+    "vendor\\optimizer\\LICENSE-Poppins.txt",
+    "GamingMode.exe.config"
   ]
 }

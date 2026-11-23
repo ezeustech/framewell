@@ -1,4 +1,11 @@
-# Changelog
+﻿# Changelog
+
+## 3.1.1-rc1 — Framewell
+
+- Renames the app to **Framewell**, while preserving existing Gaming Mode profiles and internal compatibility identifiers.
+- Adds a simple portable download: extract the complete ZIP and open `Framewell.exe`; support files stay in the accompanying `app` folder.
+- Makes the Windows download prominent and separates the ready-to-run ZIP from developer source downloads.
+- Refreshes the interface previews and startup documentation for the new name.
 
 ## 3.1.0-rc1
 

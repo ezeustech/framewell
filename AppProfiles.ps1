@@ -49,7 +49,7 @@ function Test-GamingProfileExecutable {
     elseif(-not(Test-GamingLocalExecutable $Path)){return $false}
     $full=[IO.Path]::GetFullPath($Path)
     if($full.StartsWith(([IO.Path]::GetFullPath($env:WINDIR).TrimEnd('\')+'\'),[StringComparison]::OrdinalIgnoreCase)){return $false}
-    if([IO.Path]::GetFileName($full) -match '(?i)^(steam.*|discord.*|gamingmode|powershell|pwsh|cmd|wscript|cscript|rundll32|regsvr32|msiexec|msmpeng|securityhealth.*|nvcontainer|nvdisplay.container|dwm|explorer|lsass|services|svchost|csrss|winlogon|fontdrvhost|audiodg|.*anticheat.*|.*battleye.*|vgc|vgtray|.*defender.*|.*antimalware.*)\.exe$'){return $false}
+    if([IO.Path]::GetFileName($full) -match '(?i)^(steam.*|discord.*|gamingmode|framewell|powershell|pwsh|cmd|wscript|cscript|rundll32|regsvr32|msiexec|msmpeng|securityhealth.*|nvcontainer|nvdisplay.container|dwm|explorer|lsass|services|svchost|csrss|winlogon|fontdrvhost|audiodg|.*anticheat.*|.*battleye.*|vgc|vgtray|.*defender.*|.*antimalware.*)\.exe$'){return $false}
     if($full -match '(?i)\\(?:Windows Defender|Windows Defender Advanced Threat Protection|Chrome Remote Desktop|EasyAntiCheat[^\\]*|BattlEye|Riot Vanguard|NVIDIA Corporation|DriverStore)\\'){return $false}
     return $true
 }

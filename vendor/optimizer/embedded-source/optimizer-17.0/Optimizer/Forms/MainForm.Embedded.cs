@@ -1,4 +1,4 @@
-// Gaming Mode's same-process embedding adapter. GPL-3.0-only.
+﻿// Framewell's same-process embedding adapter. GPL-3.0-only.
 using System;
 using System.Drawing;
 using System.Linq;
@@ -43,15 +43,15 @@ namespace Optimizer {
             autoStartToggle.Enabled = false;
             quickAccessToggle.Enabled = false;
             autoUpdateToggle.Enabled = false;
-            btnUpdate.Text = "Gaming Mode updates";
+            btnUpdate.Text = "Framewell updates";
             btnShodan.Text = "Shodan IP details";
             btnOpenNetwork.Text = "Adapter details";
             btnWinClean.Text = "Preview cleanup";
             btnResetConfig.Enabled = false;
-            _tips.SetToolTip(autoStartToggle, "Use Gaming Mode Settings to start the host app with Windows.");
-            _tips.SetToolTip(quickAccessToggle, "Window and tray lifetime are managed by Gaming Mode.");
-            _tips.SetToolTip(autoUpdateToggle, "Update Gaming Mode to update the embedded tools.");
-            _tips.SetToolTip(btnResetConfig, "Close Gaming Mode before resetting its private Windows-tools state.");
+            _tips.SetToolTip(autoStartToggle, "Use Framewell Settings to start the host app with Windows.");
+            _tips.SetToolTip(quickAccessToggle, "Window and tray lifetime are managed by Framewell.");
+            _tips.SetToolTip(autoUpdateToggle, "Update Framewell to update the embedded tools.");
+            _tips.SetToolTip(btnResetConfig, "Close Framewell before resetting its private Windows-tools state.");
 
             TabPage extras = new TabPage("CPU & process controls") { Name = "advancedExtrasTab", AutoScroll = true };
             extras.Controls.Add(CreateEmbeddedAdvancedExtras());

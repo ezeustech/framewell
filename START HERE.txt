@@ -1,0 +1,27 @@
+FRAMEWELL
+Your PC. Your session.
+
+1. Right-click the downloaded ZIP and choose Extract All.
+2. Open the extracted folder.
+3. Double-click Framewell.exe.
+
+No installer, terminal commands, account, or developer tools are needed to
+open the dashboard. Keep Framewell.exe, its configuration file, and the app
+folder together. Open the EXE from the extracted folder, not inside the ZIP.
+
+Supports Windows 11 x64 or Windows 10 version 1903 and later with the standard
+Windows PowerShell 5.1 and .NET Framework 4.8 components. The launcher explains
+missing components or an incomplete extraction before trying to open the app.
+
+Administrative tools request Windows approval only when you choose them.
+This is an unsigned release candidate; Windows reputation checks still apply.
+
+Your settings and profiles are stored in app\state. Keep that folder when
+upgrading; do not share it publicly. The dashboard makes no changes just by
+opening. Choose your apps and settings before starting a gaming session.
+
+More information: app\README.md
+AI-development disclosure: app\AI_TRANSPARENCY.md
+Licenses and credits: app\THIRD-PARTY-NOTICES.txt
+
+Previously called Gaming Mode. Existing profiles remain compatible.

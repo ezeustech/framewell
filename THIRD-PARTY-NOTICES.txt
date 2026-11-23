@@ -1,4 +1,4 @@
-Gaming Mode 3.1 - third-party notices
+﻿Framewell 3.1.1 - third-party notices
 
 The combined distribution is GPL-3.0; see LICENSE.txt. The original Gaming Mode
 MIT notice is preserved in LICENSE-ORIGINAL-MIT.txt. Component licenses below
@@ -7,7 +7,7 @@ continue to apply to their respective work.
 Optimizer 17.0, by hellzerg / deadmoon and contributors
 https://github.com/hellzerg/optimizer
 License: GPL-3.0, vendor/optimizer/LICENSE-GPL-3.0.txt
-Modified for same-process embedding in Gaming Mode, with host navigation,
+Modified for same-process embedding in Framewell, with host navigation,
 theme/lifetime integration, local state, deferred scans, disabled standalone
 updater/tray initialization, and additional native CPU/process controls.
 Modified corresponding source and build:
@@ -37,7 +37,7 @@ the modified source tree. The font remains under OFL, not the app's GPL license.
 Other retained upstream assets
 The Optimizer source archives include its existing screenshots, app icons,
 product logos, and flag images. These are upstream reference/resource assets,
-not original Gaming Mode artwork or claims of endorsement. Upstream notices and
+not original Framewell artwork or claims of endorsement. Upstream notices and
 source are preserved. The current host interface uses installed system fonts.
 
 Microsoft .NET / Roslyn compiler
@@ -48,7 +48,7 @@ Its package retains its original license and notices in the local build cache.
 
 NVIDIA NVAPI and NVIDIA Profile Inspector interface references
 See NvidiaReferences.txt for attribution, MIT notices, and constraints.
-Gaming Mode loads the user's installed NVIDIA DLL; no NVIDIA driver is bundled.
+Framewell loads the user's installed NVIDIA DLL; no NVIDIA driver is bundled.
 
 PresentMon
 The FPS tool can use a supported installed PresentMon. No PresentMon binary is
@@ -60,7 +60,7 @@ independent implementation using Windows APIs. See SystemToolsReferences.txt.
 No Hone executable or proprietary source is bundled.
 
 Character themes and interface inspiration
-Gaming Mode's character palettes are original combinations of colors. Their names
+Framewell's character palettes are original combinations of colors. Their names
 identify fan-inspired themes; no character artwork, franchise logos, music, or
 game content was added for these themes. Retained upstream assets are described
 above. The project is not endorsed by Apple, the referenced franchises, font

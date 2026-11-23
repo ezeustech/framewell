@@ -25,3 +25,4 @@ try{
     $build=$provider.CompileAssemblyFromSource($parameters,[string[]]$sources)
     if($build.Errors.HasErrors){throw (($build.Errors | ForEach-Object ToString) -join "`n")}
 }finally{$provider.Dispose()}
+& (Join-Path $PSScriptRoot 'Build-PortableLauncher.ps1')

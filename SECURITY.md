@@ -1,6 +1,6 @@
-# Security and sensitive reports
+﻿# Security and sensitive reports
 
-Gaming Mode can launch applications and make user-selected Windows changes. The release candidate is unsigned and has not received an independent security audit.
+Framewell can launch applications and make user-selected Windows changes. The release candidate is unsigned and has not received an independent security audit.
 
 For ordinary defects, use the repository's issue tracker. For a suspected vulnerability or accidental credential exposure, use GitHub's private vulnerability-reporting feature if it is enabled on this repository. If unavailable, open a minimal issue asking the maintainer for a private reporting channel; do not publish exploit details, personal data, or secrets there.
 

@@ -1,13 +1,13 @@
 {
   "Version": "17.0",
-  "Integration": "Gaming Mode same-process source adaptation",
+  "Integration": "Framewell same-process source adaptation",
   "Repository": "https://github.com/hellzerg/optimizer",
   "SourceTag": "17.0",
   "UpstreamSourceArchive": "optimizer-17.0-source.zip",
   "UpstreamSourceSha256": "ACAC74E393F3BACB0F8E0C7EA2ACD76D424E677294303C892F55A34FF57DC569",
   "EmbeddedSource": "embedded-source/optimizer-17.0",
   "EmbeddedAssembly": "GamingMode.Optimizer.dll",
-  "EmbeddedAssemblySha256": "FC7EC82E9853DF188DDEC51DBCEB13E053EC61024C35386E0A75DC453281F719",
+  "EmbeddedAssemblySha256": "189EB5C566D432FA4C2D84C54586F526889633E3BF864F5F67ADDDF44419DAA1",
   "BuildScript": "../../Build-EmbeddedOptimizer.ps1",
   "Compiler": {
     "Version": "4.8.0",
@@ -29,7 +29,7 @@
   "License": "GPL-3.0",
   "LicenseFile": "LICENSE-GPL-3.0.txt",
   "OriginalRetrievedUtc": "2026-11-23T17:51:45.8561149Z",
-  "AdaptedUtc": "2026-11-23T19:16:50.457845Z",
+  "AdaptedUtc": "2026-11-23T20:29:53.8881551Z",
   "CatalogEntries": 129,
   "RetiredEntries": [
     "Tweaks.TaskbarSmaller",

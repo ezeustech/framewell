@@ -1,4 +1,4 @@
-// Gaming Mode integration of Optimizer 17.0. GPL-3.0-only; see repository LICENSE.
+﻿// Framewell integration of Optimizer 17.0. GPL-3.0-only; see repository LICENSE.
 using System;
 using System.Drawing;
 using System.IO;
@@ -95,14 +95,14 @@ namespace Optimizer {
             form.Dispose();
             if (ReferenceEquals(Program._MainForm, form)) Program._MainForm = null;
         }
-        internal static void NotifyRestartRequired() { MessageBox.Show("Close and reopen Gaming Mode to reload the Windows tools. Your settings have been saved.", "Gaming Mode", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+        internal static void NotifyRestartRequired() { MessageBox.Show("Close and reopen Framewell to reload the Windows tools. Your settings have been saved.", "Framewell", MessageBoxButtons.OK, MessageBoxIcon.Information); }
         internal static bool ConfirmRestart(string message) { return MessageBox.Show(message, "Restart Windows", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes; }
-        internal static void ShowUpdateInformation() { MessageBox.Show("These Windows tools are built into Gaming Mode. Update Gaming Mode to receive a reviewed, compatible tools release. The standalone Optimizer updater is not used.", "Gaming Mode", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+        internal static void ShowUpdateInformation() { MessageBox.Show("These Windows tools are built into Framewell. Update Framewell to receive a reviewed, compatible tools release. The standalone Optimizer updater is not used.", "Framewell", MessageBoxButtons.OK, MessageBoxIcon.Information); }
     }
 
     // Own upstream dialogs with the WPF host HWND when supplied, including utility/helper dialogs.
     internal static class MessageBox {
-        public static DialogResult Show(string text) { return Show(text, "Gaming Mode", MessageBoxButtons.OK, MessageBoxIcon.None); }
+        public static DialogResult Show(string text) { return Show(text, "Framewell", MessageBoxButtons.OK, MessageBoxIcon.None); }
         public static DialogResult Show(string text, string caption) { return Show(text, caption, MessageBoxButtons.OK, MessageBoxIcon.None); }
         public static DialogResult Show(string text, string caption, MessageBoxButtons buttons) { return Show(text, caption, buttons, MessageBoxIcon.None); }
         public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon) {

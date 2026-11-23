@@ -9,8 +9,10 @@ $version=[string]$manifest.Version
 $staging=Join-Path $output ('staging-'+[guid]::NewGuid().ToString('N'))
 $runtime=Join-Path $staging 'runtime';$source=Join-Path $staging 'source'
 [void][IO.Directory]::CreateDirectory($runtime);[void][IO.Directory]::CreateDirectory($source)
+$payload=Join-Path $runtime 'app'
+[void][IO.Directory]::CreateDirectory($payload)
 $files=@($manifest.Files)
-$sourceFiles=@($files|Where-Object {$_ -notin @('GamingMode.exe','vendor\optimizer\GamingMode.Optimizer.dll','vendor\optimizer\embedded-source.zip')})+@('Launcher.cs','Build-Launcher.ps1','Build-EmbeddedOptimizer.ps1','Build-Icon.ps1','Install-GamingMode.ps1','Build-Release.ps1','.gitignore')
+$sourceFiles=@($files|Where-Object {$_ -notin @('GamingMode.exe','vendor\optimizer\GamingMode.Optimizer.dll','vendor\optimizer\embedded-source.zip')})+@('Launcher.cs','Build-Launcher.ps1','Build-EmbeddedOptimizer.ps1','Build-Icon.ps1','Install-GamingMode.ps1','Build-Release.ps1','.gitignore','PortableLauncher.cs','Build-PortableLauncher.ps1','Framewell.exe.config','START HERE.txt')
 $runtimeFiles=@($files)+@('Install-GamingMode.ps1')
 $sourceFiles+=@(Get-ChildItem -LiteralPath $root -Filter 'Test-*.ps1' -File|ForEach-Object Name)
 $sourceFiles+=@(Get-ChildItem -LiteralPath (Join-Path $root 'test-results') -Filter '*tests.ps1' -File|ForEach-Object{'test-results\'+$_.Name})
@@ -34,14 +36,15 @@ function Copy-ReleaseFiles([string[]]$Names,[string]$Target){
 # Ship the complete modified corresponding source alongside the combined runtime.
 # The standalone source archive also includes build scripts and all project sources.
 Compress-Archive -Path (Join-Path $fork '*') -DestinationPath (Join-Path $root 'vendor\optimizer\embedded-source.zip') -Force
-Copy-ReleaseFiles $runtimeFiles $runtime
+Copy-ReleaseFiles $runtimeFiles $payload
+Copy-ReleaseFiles @('Framewell.exe','Framewell.exe.config','START HERE.txt') $runtime
 Copy-ReleaseFiles $sourceFiles $source
 foreach($tree in @($runtime,$source)){
     $private=@(Get-ChildItem -LiteralPath $tree -Recurse -File|Where-Object{$_.FullName -match '[\\/](?:state|backups)[\\/]' -or $_.Name -match '(?i)(session\.json|launcher-errors|installation\.json|verification|results\.json)$'})
     if($private.Count){throw 'Private development data reached staging.'}
 }
-$runtimeArchive=Join-Path $output ('GamingMode-'+$version+'-win-x64.zip')
-$sourceArchive=Join-Path $output ('GamingMode-'+$version+'-source.zip')
+$runtimeArchive=Join-Path $output ('Framewell-'+$version+'-win-x64.zip')
+$sourceArchive=Join-Path $output ('Framewell-'+$version+'-source.zip')
 Compress-Archive -Path (Join-Path $runtime '*') -DestinationPath $runtimeArchive -Force
 Compress-Archive -Path (Join-Path $source '*') -DestinationPath $sourceArchive -Force
 $hashes=@($runtimeArchive,$sourceArchive)|ForEach-Object{(Get-FileHash -LiteralPath $_ -Algorithm SHA256).Hash.ToLowerInvariant()+'  '+[IO.Path]::GetFileName($_)}

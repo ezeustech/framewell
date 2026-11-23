@@ -10,11 +10,11 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Reflection;
 
-[assembly: AssemblyTitle("Gaming Mode")]
-[assembly: AssemblyProduct("Gaming Mode")]
+[assembly: AssemblyTitle("Framewell")]
+[assembly: AssemblyProduct("Framewell")]
 [assembly: AssemblyDescription("Per-game presets and reversible application profiles")]
-[assembly: AssemblyVersion("3.1.0.0")]
-[assembly: AssemblyFileVersion("3.1.0.0")]
+[assembly: AssemblyVersion("3.1.1.0")]
+[assembly: AssemblyFileVersion("3.1.1.0")]
 
 internal static class GamingModeLauncher
 {
@@ -95,7 +95,7 @@ internal static class GamingModeLauncher
         {
             try { File.AppendAllText(Path.Combine(root, "launcher-errors.log"), DateTime.UtcNow.ToString("o") + " " + error.Message + Environment.NewLine); }
             catch { }
-            MessageBox.Show(error.Message, "Gaming Mode", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(error.Message, "Framewell", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         finally { if(panelMutex!=null){if(panelOwned)panelMutex.ReleaseMutex();panelMutex.Dispose();} }
     }

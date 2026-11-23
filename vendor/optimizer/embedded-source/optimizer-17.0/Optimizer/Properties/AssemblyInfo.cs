@@ -4,8 +4,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Gaming Mode embedded Windows tools (Optimizer 17.0)")]
-[assembly: AssemblyDescription("GPL-3.0 Optimizer tools adapted for same-process embedding in Gaming Mode")]
+[assembly: AssemblyTitle("Framewell embedded Windows tools (Optimizer 17.0)")]
+[assembly: AssemblyDescription("GPL-3.0 Optimizer tools adapted for same-process embedding in Framewell")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("deadmoon © ∞")]
 [assembly: AssemblyProduct("Optimizer")]

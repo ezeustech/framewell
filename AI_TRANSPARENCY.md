@@ -1,6 +1,6 @@
-# AI transparency
+﻿# AI transparency
 
-Gaming Mode was developed with substantial assistance from OpenAI's Codex/ChatGPT, directed by the project owner's feature requests and preferences.
+Framewell (previously Gaming Mode) was developed with substantial assistance from OpenAI's Codex/ChatGPT, directed by the project owner's feature requests and preferences.
 
 ## Where AI contributed
 
@@ -19,7 +19,7 @@ The release candidate has been checked on a single Windows 11 development PC. Re
 
 ## Runtime behavior
 
-Gaming Mode does not embed an AI model, call an AI API, or require an AI account. Development assistance is distinct from runtime functionality. Local profiles, paths, and journals stay in the installation's `state` directory unless you choose to export them. Network tests and explicit internet-connected Windows tools contact their selected services.
+Framewell does not embed an AI model, call an AI API, or require an AI account. Development assistance is distinct from runtime functionality. Local profiles, paths, and journals stay in the portable installation's `app/state` directory unless you choose to export them. Network tests and explicit internet-connected Windows tools contact their selected services.
 
 ## Reporting problems
 
