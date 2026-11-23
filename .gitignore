@@ -7,6 +7,7 @@ installation.json
 *-results.json
 test-results/*/
 test-results/*.json
+test-results/*.txt
 *.before-*.exe
 GamingMode.build*.exe
 vendor/optimizer/source/
@@ -16,3 +17,4 @@ obj/
 GamingMode.exe
 Framewell.exe
 vendor/optimizer/GamingMode.Optimizer.dll
+vendor/optimizer/embedded-source.zip
