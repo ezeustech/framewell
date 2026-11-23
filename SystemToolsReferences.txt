@@ -1,0 +1,21 @@
+Gaming Mode system tools: implementation notes and primary sources
+
+This is an original implementation. ISLC is not bundled and its proprietary code is not copied.
+ISLC feature reference: https://www.wagnardsoft.com/forums/viewtopic.php?t=1256
+
+CPU priority and affinity use documented Windows process APIs. Realtime priority is deliberately excluded. A handle's executable path and creation time are verified before writing. No debug privilege, kernel driver, anti-cheat bypass, or permanent game-watching service is used.
+https://learn.microsoft.com/en-us/windows/win32/procthread/scheduling-priorities
+https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-setpriorityclass
+https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setprocessaffinitymask
+https://learn.microsoft.com/en-us/windows/win32/procthread/processor-groups
+
+Memory availability is read with GlobalMemoryStatusEx. Standby is reusable cache and is already part of available memory; clearing it does not create more physical RAM and can slow subsequent reads. The standby counters and fixed purge operation use Windows native SystemMemoryListInformation (class 80), with MemoryPurgeStandbyList (command 4), as documented by the Windows-internals phnt project. These native interfaces are not a stable Microsoft Win32 contract, so unsupported counters/actions are reported rather than emulated. No process working sets are emptied, no pagefile is disabled, and no modified-page purge is performed.
+https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-globalmemorystatusex
+https://github.com/winsiderss/phnt/blob/master/ntexapi.h
+https://github.com/winsiderss/systeminformer/blob/master/SystemInformer/actions.c
+
+Integer timer requests use documented timeBeginPeriod/timeEndPeriod (1-16 ms). Fractional requests (0.5 ms steps, including ISLC-like 0.5 ms) explicitly use the experimental Windows native NtSetTimerResolution API. Both methods maintain one tracked request and pair acquisition/release on stop or app exit. Native requests first read NtQueryTimerResolution bounds, clamp to those bounds, request the resolution, then read back the observed resolution. Requested, effective and observed values are reported separately. Unsupported requests fail without boot or registry changes. A failed release remains tracked for retry. Since Windows 10 version 2004, documented WinMM requests do not set a guaranteed global timer resolution; Windows 11 may ignore a window-owning app's request while occluded/minimized. Native behavior is not a stable public Win32 contract and OS timer readback does not prove that another game's waits use that resolution. No HPET, boot configuration, registry timer hack, or guaranteed FPS/latency gain is claimed.
+https://learn.microsoft.com/en-us/windows/win32/api/timeapi/nf-timeapi-timebeginperiod
+https://learn.microsoft.com/en-us/windows/win32/api/timeapi/nf-timeapi-timeendperiod
+
+The memory monitor is off by default, checks only on the chosen interval (minimum 15 seconds), clears standby only when both thresholds match, and stops when the dashboard exits. A non-elevated dashboard launches a fixed-operation elevated helper only after an explicit user action; its lifetime is tied to the original parent process handle.

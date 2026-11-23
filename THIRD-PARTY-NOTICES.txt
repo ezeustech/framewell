@@ -1,0 +1,68 @@
+Gaming Mode 3.1 - third-party notices
+
+The combined distribution is GPL-3.0; see LICENSE.txt. The original Gaming Mode
+MIT notice is preserved in LICENSE-ORIGINAL-MIT.txt. Component licenses below
+continue to apply to their respective work.
+
+Optimizer 17.0, by hellzerg / deadmoon and contributors
+https://github.com/hellzerg/optimizer
+License: GPL-3.0, vendor/optimizer/LICENSE-GPL-3.0.txt
+Modified for same-process embedding in Gaming Mode, with host navigation,
+theme/lifetime integration, local state, deferred scans, disabled standalone
+updater/tray initialization, and additional native CPU/process controls.
+Modified corresponding source and build:
+  vendor/optimizer/embedded-source/optimizer-17.0 (source package)
+  vendor/optimizer/embedded-source.zip (runtime package)
+  Build-EmbeddedOptimizer.ps1 (source and runtime packages)
+Original upstream source: vendor/optimizer/optimizer-17.0-source.zip
+Provenance: vendor/optimizer/provenance.json
+Changes are described in embedded-source/EMBEDDING.md. Original copyright notices
+are preserved. The integration is not endorsed by the upstream maintainers.
+
+Newtonsoft.Json, by James Newton-King and contributors
+https://github.com/JamesNK/Newtonsoft.Json
+License: MIT, vendor/optimizer/LICENSE-Newtonsoft.txt
+Bundled as an Optimizer dependency; the original dependency also remains in the
+corresponding source tree.
+
+Poppins retained in upstream source assets
+https://github.com/itfoundry/Poppins
+Copyright 2020 The Poppins Project Authors
+License: SIL Open Font License 1.1, vendor/optimizer/LICENSE-Poppins.txt
+The retained source file Resources/Fonts/Poppins-Regular.ttf internally identifies
+as Poppins Medium 4.004. The font is unmodified and is not used by the current
+runtime build. Its copyright and OFL notice are also included beside the font in
+the modified source tree. The font remains under OFL, not the app's GPL license.
+
+Other retained upstream assets
+The Optimizer source archives include its existing screenshots, app icons,
+product logos, and flag images. These are upstream reference/resource assets,
+not original Gaming Mode artwork or claims of endorsement. Upstream notices and
+source are preserved. The current host interface uses installed system fonts.
+
+Microsoft .NET / Roslyn compiler
+https://github.com/dotnet/roslyn
+Microsoft.Net.Compilers.Toolset 4.8.0 is a build-time dependency downloaded from
+NuGet with a pinned SHA-256. It is not redistributed in runtime/source archives.
+Its package retains its original license and notices in the local build cache.
+
+NVIDIA NVAPI and NVIDIA Profile Inspector interface references
+See NvidiaReferences.txt for attribution, MIT notices, and constraints.
+Gaming Mode loads the user's installed NVIDIA DLL; no NVIDIA driver is bundled.
+
+PresentMon
+The FPS tool can use a supported installed PresentMon. No PresentMon binary is
+included. Its own license and attribution remain with the installed copy.
+
+ISLC and other tuning products
+ISLC is not bundled, copied, or reverse engineered. The memory controls are an
+independent implementation using Windows APIs. See SystemToolsReferences.txt.
+No Hone executable or proprietary source is bundled.
+
+Character themes and interface inspiration
+Gaming Mode's character palettes are original combinations of colors. Their names
+identify fan-inspired themes; no character artwork, franchise logos, music, or
+game content was added for these themes. Retained upstream assets are described
+above. The project is not endorsed by Apple, the referenced franchises, font
+authors, or hardware vendors.
+

@@ -1,0 +1,32 @@
+Gaming Mode 3.1.0-rc1
+
+This is an unsigned Windows x64 release candidate. Read README.md,
+AI_TRANSPARENCY.md, docs/LIMITATIONS.md and docs/VALIDATION.md before distribution.
+The project has substantial AI-assisted implementation and test development.
+No independent audit or universal performance benefit is claimed.
+
+Assets:
+  GamingMode-3.1.0-rc1-win-x64.zip
+  GamingMode-3.1.0-rc1-source.zip
+  SHA256SUMS.txt
+
+The combined embedded distribution is GPL-3.0. Original/component notices are
+preserved. Runtime includes complete modified Optimizer corresponding source
+in vendor/optimizer/embedded-source.zip. Source includes the editable fork and
+build scripts. Build-EmbeddedOptimizer.ps1 verifies its pinned compiler.
+
+Run from a writable local folder. Optional installation defaults to
+%LOCALAPPDATA%/Programs/Gaming Mode and preserves existing local state. Personal
+profiles, server configuration, credentials, snapshots and logs are excluded from
+public packages by an explicit allowlist. Never publish the working state folder.
+
+Validation covers isolated tests, same-process embedding, themed layouts, clean
+installation/source builds and native read-only checks on one Windows 11 PC.
+Broader OS/hardware, administrator handoff, live display changes, driver writes
+and anti-cheat compatibility still need validation. Obtain code signing and a
+broader hardware test matrix before calling this a stable general release.
+
+No automatic updater or telemetry is installed by the host. The embedded upstream
+automatic updater/feed/tray lifecycle is disabled. Explicit network tests and
+internet-connected tools contact their chosen endpoints.
+

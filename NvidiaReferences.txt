@@ -1,0 +1,60 @@
+Gaming Mode NVIDIA profile backend
+
+Primary implementation references (checked 2026-11-23):
+https://docs.nvidia.com/nvapi/group__drsapi.html
+https://github.com/NVIDIA/nvapi/blob/main/nvapi.h
+https://github.com/NVIDIA/nvapi/blob/main/nvapi_interface.h
+https://github.com/NVIDIA/nvapi/blob/main/NvApiDriverSettings.h
+https://developer.download.nvidia.com/NVAPI/NVIDIA_Driver_Settings_PG-12072-001_v01.pdf
+https://www.nvidia.com/content/Control-Panel-Help/vLatest/en-us/mergedProjects/nv3d/Manage_3D_Settings_%28Reference%29.htm
+https://github.com/Orbmu2k/nvidiaProfileInspector/blob/master/nvidiaProfileInspector/Native/NVAPI/NvapiDrsWrapper.cs
+https://github.com/Orbmu2k/nvidiaProfileInspector/blob/master/nvidiaProfileInspector/CustomSettingNames.xml
+
+This NVIDIA backend does not run Profile Inspector or a third-party optimizer.
+The bridge loads the installed nvapi64.dll from Windows System32.
+The low-latency compound mapping follows Inspector's published metadata, but is
+disabled unless the driver exposes all required settings. Prefer in-game Reflex.
+
+Scope and limitations:
+- Apply writes only fixed DWORD settings in the selected executable's single-app
+  profile. A full-path association is created for an unassociated executable.
+- Existing shared, global, command-line and packaged-app profiles are protected.
+  Moving a predefined shared association and cloning unknown compatibility bits
+  is deliberately unsupported because exact restoration cannot be assured.
+- No global settings, display modes, DLSS models, clocks, voltage, power limits,
+  anticheat files, game binaries, in-game config files, or driver files are changed.
+- Performance selects maximum texture filtering shortcuts, VSync off, maximum
+  power preference, highest refresh and no driver FPS cap. It may add shimmer,
+  texture softness or tearing. Quality selects high-quality filtering, disables
+  filtering shortcuts, clamps negative LOD bias, turns VSync on and requests
+  highest refresh/max power with no driver cap. VSync can add latency.
+- Both are deterministic driver presets, not changes to in-game graphics or a
+  guarantee of FPS or image quality. Both can raise GPU power use/temperatures.
+- Low-latency mode is left unchanged by both presets. Prefer in-game Reflex.
+- Preferences persist until Restore previous is selected. Restart the game.
+- The journal preserves the first original state through repeated applications,
+  including absent/inherited/predefined settings, and retains later manual edits.
+- NVIDIA read-only checks passed on driver 621.14. Live writes were not performed
+  during development. Fake-driver tests exercise the mutation/restore workflow.
+
+NVIDIA header license (ABI declarations and interface/setting identifiers):
+Copyright (c) 2019-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+SPDX-License-Identifier: MIT
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

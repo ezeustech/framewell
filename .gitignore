@@ -1,0 +1,17 @@
+state/
+backups/
+dist/
+*.log
+installation.json
+*-verification.json
+*-results.json
+test-results/*/
+test-results/*.json
+*.before-*.exe
+GamingMode.build*.exe
+vendor/optimizer/source/
+publish/
+bin/
+obj/
+GamingMode.exe
+vendor/optimizer/GamingMode.Optimizer.dll

@@ -1,0 +1,1292 @@
+[
+  {
+    "Id": "PostAction.Restart",
+    "Category": "PostAction",
+    "Name": "Post Action / Restart",
+    "Description": "Explicit Windows restart controls are available in Tool preferences. Selecting a catalog item never schedules or performs a restart; the action asks for confirmation.",
+    "SectionId": "optionsTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "PostAction.RestartType",
+    "Category": "PostAction",
+    "Name": "Post Action / Restart Type",
+    "Description": "Explicit Windows restart controls are available in Tool preferences. Selecting a catalog item never schedules or performs a restart; the action asks for confirmation.",
+    "SectionId": "optionsTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.TempFiles",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Temp Files",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.BsodDumps",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Bsod Dumps",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.ErrorReports",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Error Reports",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.RecycleBin",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Recycle Bin",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.InternetExplorer",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Internet Explorer",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.GoogleChrome.Cache",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Google Chrome / Cache",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.GoogleChrome.Cookies",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Google Chrome / Cookies",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.GoogleChrome.History",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Google Chrome / History",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.GoogleChrome.Session",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Google Chrome / Session",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.GoogleChrome.Passwords",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Google Chrome / Passwords",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.MozillaFirefox.Cache",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Mozilla Firefox / Cache",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.MozillaFirefox.Cookies",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Mozilla Firefox / Cookies",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.MozillaFirefox.History",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Mozilla Firefox / History",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.MicrosoftEdge.Cache",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Microsoft Edge / Cache",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.MicrosoftEdge.Cookies",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Microsoft Edge / Cookies",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.MicrosoftEdge.History",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Microsoft Edge / History",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.MicrosoftEdge.Session",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Microsoft Edge / Session",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.BraveBrowser.Cache",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Brave Browser / Cache",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.BraveBrowser.Cookies",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Brave Browser / Cookies",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.BraveBrowser.History",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Brave Browser / History",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.BraveBrowser.Session",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Brave Browser / Session",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Cleaner.BraveBrowser.Passwords",
+    "Category": "Cleaner",
+    "Name": "Cleaner / Brave Browser / Passwords",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "cleanerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Pinger.SetDNS",
+    "Category": "Pinger",
+    "Name": "Pinger / Set DNS",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "pingerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Pinger.CustomDNSv4",
+    "Category": "Pinger",
+    "Name": "Pinger / Custom DNSv4",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "pingerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Pinger.CustomDNSv6",
+    "Category": "Pinger",
+    "Name": "Pinger / Custom DNSv6",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "pingerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Pinger.FlushDNSCache",
+    "Category": "Pinger",
+    "Name": "Pinger / Flush DNSCache",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "pingerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "ProcessControl.Prevent",
+    "Category": "ProcessControl",
+    "Name": "Process Control / Prevent",
+    "Description": "Native CPU & process controls preview an executable launch block or removal, require administrator confirmation, preserve other tools' settings and keep a conflict-aware restore record.",
+    "SectionId": "advancedExtrasTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "ProcessControl.Allow",
+    "Category": "ProcessControl",
+    "Name": "Process Control / Allow",
+    "Description": "Native CPU & process controls preview an executable launch block or removal, require administrator confirmation, preserve other tools' settings and keep a conflict-aware restore record.",
+    "SectionId": "advancedExtrasTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "HostsEditor.Block",
+    "Category": "HostsEditor",
+    "Name": "Hosts Editor / Block",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "hostsEditorTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "HostsEditor.Add",
+    "Category": "HostsEditor",
+    "Name": "Hosts Editor / Add",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "hostsEditorTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "HostsEditor.Remove",
+    "Category": "HostsEditor",
+    "Name": "Hosts Editor / Remove",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "hostsEditorTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "HostsEditor.IncludeWwwCname",
+    "Category": "HostsEditor",
+    "Name": "Hosts Editor / Include Www Cname",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "hostsEditorTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "RegistryFix.TaskManager",
+    "Category": "RegistryFix",
+    "Name": "Registry Fix / Task Manager",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "registryFixerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "RegistryFix.CommandPrompt",
+    "Category": "RegistryFix",
+    "Name": "Registry Fix / Command Prompt",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "registryFixerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "RegistryFix.ControlPanel",
+    "Category": "RegistryFix",
+    "Name": "Registry Fix / Control Panel",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "registryFixerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "RegistryFix.FolderOptions",
+    "Category": "RegistryFix",
+    "Name": "Registry Fix / Folder Options",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "registryFixerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "RegistryFix.RunDialog",
+    "Category": "RegistryFix",
+    "Name": "Registry Fix / Run Dialog",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "registryFixerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "RegistryFix.RightClickMenu",
+    "Category": "RegistryFix",
+    "Name": "Registry Fix / Right Click Menu",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "registryFixerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "RegistryFix.WindowsFirewall",
+    "Category": "RegistryFix",
+    "Name": "Registry Fix / Windows Firewall",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "registryFixerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "RegistryFix.RegistryEditor",
+    "Category": "RegistryFix",
+    "Name": "Registry Fix / Registry Editor",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "registryFixerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Integrator.TakeOwnership",
+    "Category": "Integrator",
+    "Name": "Integrator / Take Ownership",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "integratorTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Integrator.OpenWithCMD",
+    "Category": "Integrator",
+    "Name": "Integrator / Open With CMD",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "integratorTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "AdvancedTweaks.UnlockAllCores",
+    "Category": "AdvancedTweaks",
+    "Name": "Advanced Tweaks / Unlock All Cores",
+    "Description": "Native CPU & process controls show the exact registry change before application and save a conflict-aware restore record. No automatic restart or promised FPS improvement.",
+    "SectionId": "advancedExtrasTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "AdvancedTweaks.DisableHPET",
+    "Category": "AdvancedTweaks",
+    "Name": "Advanced Tweaks / Disable HPET",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "advancedTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "AdvancedTweaks.EnableLoginVerbose",
+    "Category": "AdvancedTweaks",
+    "Name": "Advanced Tweaks / Enable Login Verbose",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "advancedTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "AdvancedTweaks.EnableRegistryBackups",
+    "Category": "AdvancedTweaks",
+    "Name": "Advanced Tweaks / Enable Registry Backups",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "advancedTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "AdvancedTweaks.SvchostProcessSplitting.Disable",
+    "Category": "AdvancedTweaks",
+    "Name": "Advanced Tweaks / Svchost Process Splitting / Disable",
+    "Description": "Native CPU & process controls show the exact registry change before application and save a conflict-aware restore record. No automatic restart or promised FPS improvement.",
+    "SectionId": "advancedExtrasTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "AdvancedTweaks.SvchostProcessSplitting.RAM",
+    "Category": "AdvancedTweaks",
+    "Name": "Advanced Tweaks / Svchost Process Splitting / RAM",
+    "Description": "Native CPU & process controls show the exact registry change before application and save a conflict-aware restore record. No automatic restart or promised FPS improvement.",
+    "SectionId": "advancedExtrasTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.EnablePerformanceTweaks",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Enable Performance Tweaks",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableNetworkThrottling",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Network Throttling",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableSystemRestore",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable System Restore",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisablePrintService",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Print Service",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableMediaPlayerSharing",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Media Player Sharing",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableErrorReporting",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Error Reporting",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableHomeGroup",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Home Group",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableSuperfetch",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Superfetch",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableTelemetryTasks",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Telemetry Tasks",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableOffice2016Telemetry",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Office2016Telemetry",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableCompatibilityAssistant",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Compatibility Assistant",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableHibernation",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Hibernation",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableSMB1",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable SMB1",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableSMB2",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable SMB2",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableNTFSTimeStamp",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable NTFSTime Stamp",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableFaxService",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Fax Service",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableSmartScreen",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Smart Screen",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableStickyKeys",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Sticky Keys",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableCloudClipboard",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Cloud Clipboard",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.EnableLegacyVolumeSlider",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Enable Legacy Volume Slider",
+    "Description": "Legacy volume slider option is shown by upstream for Windows 10 and hidden on Windows 11.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "PlatformDependent",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableQuickAccessHistory",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Quick Access History",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableStartMenuAds",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Start Menu Ads",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.UninstallOneDrive",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Uninstall One Drive",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableMyPeople",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable My People",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableAutomaticUpdates",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Automatic Updates",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.ExcludeDrivers",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Exclude Drivers",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableTelemetryServices",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Telemetry Services",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisablePrivacyOptions",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Privacy Options",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableCortana",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Cortana",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableSensorServices",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Sensor Services",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableWindowsInk",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Windows Ink",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableSpellingTyping",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Spelling Typing",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableXboxLive",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Xbox Live",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableGameBar",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Game Bar",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableInsiderService",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Insider Service",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableStoreUpdates",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Store Updates",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.EnableLongPaths",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Enable Long Paths",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.RemoveCastToDevice",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Remove Cast To Device",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.EnableGamingMode",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Enable Gaming Mode",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableTPMCheck",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable TPMCheck",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableVirtualizationBasedTechnology",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Virtualization Based Technology",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableVisualStudioTelemetry",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Visual Studio Telemetry",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableFirefoxTemeletry",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Firefox Temeletry",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableChromeTelemetry",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Chrome Telemetry",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableNVIDIATelemetry",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable NVIDIATelemetry",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableSearch",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Search",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableEdgeDiscoverBar",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Edge Discover Bar",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableEdgeTelemetry",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Edge Telemetry",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.RestoreClassicPhotoViewer",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Restore Classic Photo Viewer",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.EnableUtcTime",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Enable Utc Time",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.ShowAllTrayIcons",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Show All Tray Icons",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.RemoveMenusDelay",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Remove Menus Delay",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableModernStandby",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Modern Standby",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.HideTaskbarWeather",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Hide Taskbar Weather",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.HideTaskbarSearch",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Hide Taskbar Search",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableNewsInterests",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable News Interests",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableWindowsDefender",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Windows Defender",
+    "Description": "Upstream exposes this legacy Defender control only on supported older Windows versions. It is intentionally hidden on Windows 10 and 11; no hidden policy bypass is applied.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "PlatformDependent",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.TaskbarToLeft",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Taskbar To Left",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableSnapAssist",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Snap Assist",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableWidgets",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Widgets",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableChat",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Chat",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.TaskbarSmaller",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Taskbar Smaller",
+    "Description": "Unavailable: Optimizer 17.0 retired this legacy tweak; its implementation is commented out upstream. This catalog entry is retained for transparency and has no Apply action.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Retired",
+    "Compatibility": "Not implemented in upstream Optimizer 17.0."
+  },
+  {
+    "Id": "Tweaks.DisableStickers",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Stickers",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.ClassicRibbon",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Classic Ribbon",
+    "Description": "Unavailable: Optimizer 17.0 retired this legacy tweak; its implementation is commented out upstream. This catalog entry is retained for transparency and has no Apply action.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Retired",
+    "Compatibility": "Not implemented in upstream Optimizer 17.0."
+  },
+  {
+    "Id": "Tweaks.ClassicMenu",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Classic Menu",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.CompactMode",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Compact Mode",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableCoPilotAI",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable Co Pilot AI",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "windows10Tab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Tweaks.DisableOneDrive",
+    "Category": "Tweaks",
+    "Name": "Tweaks / Disable One Drive",
+    "Description": "Legacy OneDrive policy control for Windows 8. Windows 10/11 use the separate Uninstall OneDrive option where available.",
+    "SectionId": "universalTab",
+    "Execution": "Embedded",
+    "Availability": "PlatformDependent",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Apps",
+    "Category": "Utilities",
+    "Name": "App downloads",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "appsTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "UWP",
+    "Category": "Utilities",
+    "Name": "Installed UWP apps",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "modernAppsTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Startup",
+    "Category": "Utilities",
+    "Name": "Startup manager",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "startupTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Hardware",
+    "Category": "Utilities",
+    "Name": "Hardware inspection",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "indiciumTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Disk",
+    "Category": "Utilities",
+    "Name": "Disk activity",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "diskActivityTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Unlocker",
+    "Category": "Utilities",
+    "Name": "File lock handles",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "fileHandlesTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Variables",
+    "Category": "Utilities",
+    "Name": "Environment variables",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "integratorTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Run",
+    "Category": "Utilities",
+    "Name": "Run dialog commands",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "integratorTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "ContextMenu",
+    "Category": "Utilities",
+    "Name": "Desktop context menus",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "integratorTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Language",
+    "Category": "Utilities",
+    "Name": "28 interface languages",
+    "Description": "Runs in Gaming Mode's embedded Windows tools. Review the selected control and choose an action explicitly. Each tool has its own restore behavior.",
+    "SectionId": "optionsTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  },
+  {
+    "Id": "Shodan",
+    "Category": "Utilities",
+    "Name": "Shodan IP details",
+    "Description": "Native viewer for Shodan InternetDB public IPv4 metadata. Queries occur only on request; results are weekly snapshots, not a live scan or full Shodan account lookup. Non-commercial API use is free; commercial use requires a Shodan license.",
+    "SectionId": "pingerTab",
+    "Execution": "Embedded",
+    "Availability": "Available",
+    "Compatibility": "Windows edition, build and administrator permissions may affect availability."
+  }
+]

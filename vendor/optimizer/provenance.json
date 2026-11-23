@@ -1,0 +1,54 @@
+{
+  "Version": "17.0",
+  "Integration": "Gaming Mode same-process source adaptation",
+  "Repository": "https://github.com/hellzerg/optimizer",
+  "SourceTag": "17.0",
+  "UpstreamSourceArchive": "optimizer-17.0-source.zip",
+  "UpstreamSourceSha256": "ACAC74E393F3BACB0F8E0C7EA2ACD76D424E677294303C892F55A34FF57DC569",
+  "EmbeddedSource": "embedded-source/optimizer-17.0",
+  "EmbeddedAssembly": "GamingMode.Optimizer.dll",
+  "EmbeddedAssemblySha256": "FC7EC82E9853DF188DDEC51DBCEB13E053EC61024C35386E0A75DC453281F719",
+  "BuildScript": "../../Build-EmbeddedOptimizer.ps1",
+  "Compiler": {
+    "Version": "4.8.0",
+    "Source": "https://api.nuget.org/v3-flatcontainer/microsoft.net.compilers.toolset/4.8.0/microsoft.net.compilers.toolset.4.8.0.nupkg",
+    "Package": "Microsoft.Net.Compilers.Toolset",
+    "Sha256": "37333F4F1E2CE55E621355D6DA651DC23D4CB5F94A8F76B9478816E87F110AD9"
+  },
+  "Dependencies": [
+    {
+      "Version": "13.0.4",
+      "LicenseFile": "LICENSE-Newtonsoft.txt",
+      "Source": "https://github.com/JamesNK/Newtonsoft.Json/tree/13.0.4",
+      "File": "Newtonsoft.Json.dll",
+      "Sha256": "F0C07AF0E84D4DD4DA4BD7823BA4535BC0481B3BF623ED40B659B68147A6BB75",
+      "Name": "Newtonsoft.Json",
+      "License": "MIT"
+    }
+  ],
+  "License": "GPL-3.0",
+  "LicenseFile": "LICENSE-GPL-3.0.txt",
+  "OriginalRetrievedUtc": "2026-11-23T17:51:45.8561149Z",
+  "AdaptedUtc": "2026-11-23T19:16:50.457845Z",
+  "CatalogEntries": 129,
+  "RetiredEntries": [
+    "Tweaks.TaskbarSmaller",
+    "Tweaks.ClassicRibbon"
+  ],
+  "Execution": "In-process WinForms child hosted by WPF; no standalone Optimizer launch",
+  "AITransparency": "Integration and supporting changes were developed with AI assistance, compiled and checked using read-only UI and pure planning tests. Windows-changing actions were not exercised on this PC.",
+  "RetainedSourceAssets": [
+    {
+      "Name": "Poppins",
+      "UsedByRuntimeBuild": false,
+      "Sha256": "8D909883DE81344E0FBCFEF30E931872E92D9AEECDF85B6DCF6E0B28C078E98E",
+      "File": "embedded-source/optimizer-17.0/Optimizer/Resources/Fonts/Poppins-Regular.ttf",
+      "InternalFamily": "Poppins Medium",
+      "LicenseFile": "LICENSE-Poppins.txt",
+      "License": "SIL Open Font License 1.1",
+      "Copyright": "Copyright 2020 The Poppins Project Authors (https://github.com/itfoundry/Poppins)",
+      "Version": "4.004",
+      "LicenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/OFL.txt"
+    }
+  ]
+}
